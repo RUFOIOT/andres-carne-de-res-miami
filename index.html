@@ -95,6 +95,10 @@ section{padding:100px 0;}
 
 /* ── SOLUCIÓN ──────────────────────────────── */
 .agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;}
+.agents-grid-extended{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px;}
+.agent-card.personalizacion::before{background:linear-gradient(90deg,#9B59B6,#A78BFF);}
+.agent-card.inventario::before{background:linear-gradient(90deg,#1ABC9C,#2ECC71);}
+.agent-card.feedback::before{background:linear-gradient(90deg,#E67E22,#F39C12);}
 .agent-card{background:var(--bg-card);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
 .agent-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.4);}
 .agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
@@ -450,6 +454,68 @@ footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-c
       </div>
 
     </div>
+
+    <!-- CAPA AVANZADA: 3 INTELIGENCIAS ADICIONALES -->
+    <div style="margin-top:48px;" class="fade-in">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <div style="flex:1;height:1px;background:var(--line);"></div>
+        <span style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;">⚡ Capa de inteligencia avanzada</span>
+        <div style="flex:1;height:1px;background:var(--line);"></div>
+      </div>
+      <p style="font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:640px;margin-bottom:36px;">Más allá de vender y reservar — tres módulos que convierten a Andrés Miami en un restaurante <em style="color:var(--gold);">operativamente inteligente.</em></p>
+    </div>
+
+    <div class="agents-grid-extended">
+
+      <!-- PERSONALIZACIÓN -->
+      <div class="agent-card personalizacion fade-in">
+        <div class="agent-num">MÓDULO 04</div>
+        <div class="agent-icon">🎯</div>
+        <div class="agent-name">Personalización de Experiencia</div>
+        <div class="agent-desc">La IA analiza el historial de cada cliente y les sugiere platos, pisos y experiencias a medida en el momento de reservar. Cada visita se siente única — porque lo es.</div>
+        <ul class="agent-features">
+          <li>Perfil de consumo acumulado por cliente (preferencias, alérgenos, ocasiones)</li>
+          <li>Sugerencias de platos personalizadas al confirmar reserva</li>
+          <li>Detección de cliente recurrente: "La última vez pediste Picanha, ¿la reservamos?"</li>
+          <li>Recomendación de piso según perfil (celebración → Cielo, grupo grande → Infierno)</li>
+          <li>Paquetes ad-hoc: cumpleaños, aniversario, despedida de soltero</li>
+        </ul>
+        <div class="agent-badge"><span class="tag" style="background:rgba(155,89,182,.1);border-color:rgba(155,89,182,.3);color:#A78BFF;">Experiencia top</span></div>
+      </div>
+
+      <!-- INVENTARIO -->
+      <div class="agent-card inventario fade-in">
+        <div class="agent-num">MÓDULO 05</div>
+        <div class="agent-icon">📊</div>
+        <div class="agent-name">Optimización de Inventario</div>
+        <div class="agent-desc">La IA cruza reservas confirmadas, historial de consumo y estacionalidad para predecir demanda de insumos en tiempo real. Menos desperdicio, mejores márgenes, cero roturas de stock.</div>
+        <ul class="agent-features">
+          <li>Predicción de demanda semanal por plato basada en reservas activas</li>
+          <li>Alertas automáticas de reposición antes de llegar al límite</li>
+          <li>Detección de patrones: viernes noche → +40% cortes premium</li>
+          <li>Reporte de desperdicio estimado vs real para decisiones de menú</li>
+          <li>Dashboard de márgenes por ítem en tiempo real</li>
+        </ul>
+        <div class="agent-badge"><span class="tag" style="background:rgba(26,188,156,.1);border-color:rgba(26,188,156,.3);color:#1ABC9C;">Ahorro operativo</span></div>
+      </div>
+
+      <!-- FEEDBACK INTELIGENTE -->
+      <div class="agent-card feedback fade-in">
+        <div class="agent-num">MÓDULO 06</div>
+        <div class="agent-icon">⭐</div>
+        <div class="agent-name">Feedback Inteligente & Retorno</div>
+        <div class="agent-desc">Al cierre de cada visita, el agente activa una secuencia de feedback instantáneo. Detecta fricciones antes de que lleguen a Google, convierte satisfacción en reseña, e insatisfacción en segunda oportunidad.</div>
+        <ul class="agent-features">
+          <li>Encuesta post-visita en WhatsApp a las 2h del checkout</li>
+          <li>Score NPS con detección automática de promotores vs detractores</li>
+          <li>Protocolo de recuperación inmediata: detractores → manager en 30 min</li>
+          <li>Promotores → invitación directa a dejar reseña Google / TripAdvisor</li>
+          <li>Incentivo de retorno personalizado según experiencia reportada</li>
+        </ul>
+        <div class="agent-badge"><span class="tag" style="background:rgba(230,126,34,.1);border-color:rgba(230,126,34,.3);color:#E67E22;">Reputación activa</span></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -515,41 +581,49 @@ footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-c
     <div class="roi-grid">
       <div>
         <div class="roi-table fade-in">
-          <div class="roi-row">
-            <span class="roi-label">Consultas WhatsApp / mes (estimado)</span>
-            <span class="roi-val">300</span>
+          <div class="roi-row" style="background:rgba(201,168,76,.04);">
+            <span class="roi-label" style="font-size:11px;color:var(--ink-mute);letter-spacing:.1em;">VENTAS & RESERVAS</span>
+            <span class="roi-val" style="font-size:11px;color:var(--ink-mute);">—</span>
           </div>
           <div class="roi-row">
-            <span class="roi-label">Tasa conversión reservas regulares (12%)</span>
-            <span class="roi-val">36 bookings</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-label">Ticket promedio mesa × 4 personas</span>
-            <span class="roi-val">$280</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-label">Revenue adicional reservas regulares</span>
+            <span class="roi-label">Reservas capturadas por agente / mes (36)</span>
             <span class="roi-val">$10,080</span>
           </div>
           <div class="roi-row">
-            <span class="roi-label">Eventos privados convertidos / mes (2)</span>
-            <span class="roi-val">2 eventos</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-label">Promedio evento privado</span>
-            <span class="roi-val">$12,000</span>
-          </div>
-          <div class="roi-row">
-            <span class="roi-label">Revenue adicional eventos privados</span>
+            <span class="roi-label">Eventos privados adicionales / mes (2)</span>
             <span class="roi-val">$24,000</span>
           </div>
           <div class="roi-row">
-            <span class="roi-label">Upsell (botellas, upgrades, packages)</span>
+            <span class="roi-label">Upsell botellas, upgrades, packages</span>
             <span class="roi-val">$3,200</span>
           </div>
+          <div class="roi-row" style="background:rgba(155,89,182,.04);">
+            <span class="roi-label" style="font-size:11px;color:var(--ink-mute);letter-spacing:.1em;">PERSONALIZACIÓN & RETORNO</span>
+            <span class="roi-val" style="font-size:11px;color:var(--ink-mute);">—</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Clientes recurrentes por experiencia personalizada (+15%)</span>
+            <span class="roi-val">$4,800</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Incremento ticket por sugerencias IA (+8%)</span>
+            <span class="roi-val">$2,400</span>
+          </div>
+          <div class="roi-row" style="background:rgba(26,188,156,.04);">
+            <span class="roi-label" style="font-size:11px;color:var(--ink-mute);letter-spacing:.1em;">AHORRO OPERATIVO (INVENTARIO)</span>
+            <span class="roi-val" style="font-size:11px;color:var(--ink-mute);">—</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Reducción desperdicio de insumos (12% costo)</span>
+            <span class="roi-val">$3,600</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Ahorro horas staff en consultas repetitivas</span>
+            <span class="roi-val">$1,800</span>
+          </div>
           <div class="roi-row total">
-            <span class="roi-label" style="font-weight:600;color:var(--ink);">Revenue adicional total / mes</span>
-            <span class="roi-val big">$37,280</span>
+            <span class="roi-label" style="font-weight:600;color:var(--ink);">Impacto total / mes</span>
+            <span class="roi-val big">$49,880</span>
           </div>
           <div class="roi-row">
             <span class="roi-label">Inversión mensual (plan completo)</span>
@@ -557,15 +631,15 @@ footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-c
           </div>
           <div class="roi-row total">
             <span class="roi-label" style="font-weight:600;color:var(--ink);">ROI mensual estimado</span>
-            <span class="roi-val big">1,143%</span>
+            <span class="roi-val big">1,563%</span>
           </div>
         </div>
         <p style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);margin-top:12px;">* Proyección conservadora. Los resultados reales dependen del volumen de tráfico existente y calidad de atención anterior. Primeros 90 días son de optimización y calibración.</p>
       </div>
       <div class="roi-summary">
         <div class="roi-kpi fade-in">
-          <div class="roi-kpi-num">11×</div>
-          <div class="roi-kpi-label">Retorno por cada dólar invertido (escenario conservador)</div>
+          <div class="roi-kpi-num">16×</div>
+          <div class="roi-kpi-label">Retorno por cada dólar invertido (escenario conservador, 6 módulos activos)</div>
         </div>
         <div class="roi-kpi fade-in">
           <div class="roi-kpi-num">3–4 sem.</div>
@@ -575,9 +649,13 @@ footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-c
           <div class="roi-kpi-num">100%</div>
           <div class="roi-kpi-label">Implementación remota. Sin interrumpir la operación del restaurante</div>
         </div>
-        <div class="roi-kpi fade-in" style="background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.3);">
-          <div class="roi-kpi-num" style="font-size:26px;color:var(--gold-glow);">+ Ahorro Staff</div>
-          <div class="roi-kpi-label">El agente maneja ~150 consultas repetitivas/mes que hoy consumen tiempo del equipo. Eso se traduce en mejor atención en sala y reducción de carga operativa.</div>
+        <div class="roi-kpi fade-in" style="background:rgba(26,188,156,.06);border-color:rgba(26,188,156,.3);">
+          <div class="roi-kpi-num" style="font-size:26px;color:#1ABC9C;">–12% Desperdicio</div>
+          <div class="roi-kpi-label">La predicción de demanda por IA reduce el costo de insumos desperdiciados. En un restaurante de volumen como Andrés, eso puede ser $3,000–$5,000/mes de ahorro directo en margen.</div>
+        </div>
+        <div class="roi-kpi fade-in" style="background:rgba(155,89,182,.06);border-color:rgba(155,89,182,.3);">
+          <div class="roi-kpi-num" style="font-size:26px;color:#A78BFF;">+15% Recurrencia</div>
+          <div class="roi-kpi-label">La personalización activa convierte clientes de una visita en clientes de 3+ visitas al año. El LTV (valor de vida del cliente) se multiplica sin costo de adquisición adicional.</div>
         </div>
       </div>
     </div>
@@ -683,6 +761,9 @@ footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-c
           <li>Agente Ventas & Eventos Privados (WhatsApp + Web)</li>
           <li>Agente Concierge de Reservas 24/7</li>
           <li>Agente Post-Venta & Fidelización</li>
+          <li>Módulo de Personalización de Experiencia</li>
+          <li>Módulo de Optimización de Inventario</li>
+          <li>Módulo de Feedback Inteligente & NPS</li>
           <li>Integración Tripleseat + CRM básico</li>
           <li>Upsell de botellas, packages y upgrades de piso</li>
           <li>NPS automatizado post-visita</li>
