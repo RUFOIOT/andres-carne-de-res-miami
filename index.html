@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Andrés Carne de Res Miami × Vibramente AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:       #0A0806;
+  --bg-card:  #110E0A;
+  --bg-card2: #1A1410;
+  --gold:     #C9A84C;
+  --gold-glow:#E8C547;
+  --red:      #B5341A;
+  --red-soft: #D44A28;
+  --ink:      #F4EFE6;
+  --ink-soft: #C8BFB0;
+  --ink-mute: #7A7060;
+  --line:     #2A2318;
+  --mono:     'JetBrains Mono', monospace;
+  --display:  'Playfair Display', serif;
+  --body:     'Inter', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;}
+
+/* ── UTILS ─────────────────────────────────── */
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-mute);}
+em{color:var(--gold);font-style:italic;}
+strong{color:var(--ink);}
+.tag{display:inline-block;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:4px;}
+.tag.red{background:rgba(181,52,26,.12);border-color:rgba(181,52,26,.3);color:var(--red-soft);}
+
+/* ── NAVBAR ────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,8,6,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;}
+.nav-brand{font-family:var(--display);font-size:16px;color:var(--gold);}
+.nav-cta a{display:inline-block;background:var(--gold);color:#000;font-size:12px;font-weight:600;padding:8px 18px;border-radius:6px;text-decoration:none;letter-spacing:.05em;}
+.nav-cta a:hover{background:var(--gold-glow);}
+
+/* ── HERO ──────────────────────────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 24px 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(181,52,26,.18) 0%, transparent 70%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.hero-eyebrow{margin-bottom:20px;}
+.hero h1{font-family:var(--display);font-size:clamp(36px,5vw,60px);line-height:1.05;letter-spacing:-.02em;margin-bottom:28px;}
+.hero-lead{font-size:17px;color:var(--ink-soft);line-height:1.7;margin-bottom:40px;max-width:500px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;}
+.btn-primary{background:var(--gold);color:#000;}
+.btn-primary:hover{background:var(--gold-glow);transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-visual{position:relative;}
+.hero-card{background:var(--bg-card);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+.stat-box{text-align:center;}
+.stat-num{font-family:var(--display);font-size:36px;font-weight:700;color:var(--gold);}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.15em;text-transform:uppercase;margin-top:4px;}
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--line);padding-top:20px;}
+.ticker-track{display:flex;gap:32px;animation:ticker 20s linear infinite;white-space:nowrap;}
+.ticker-item{font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.15em;text-transform:uppercase;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ── SECTION BASE ──────────────────────────── */
+section{padding:100px 0;}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:16px;}
+.section-title{font-family:var(--display);font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;}
+.section-lede{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:600px;}
+.divider{border:none;border-top:1px solid var(--line);margin:0;}
+
+/* ── NEGOCIO ───────────────────────────────── */
+.business-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
+.biz-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:28px;transition:border-color .2s;}
+.biz-card:hover{border-color:rgba(201,168,76,.3);}
+.biz-icon{font-size:28px;margin-bottom:16px;}
+.biz-title{font-family:var(--display);font-size:18px;margin-bottom:10px;}
+.biz-desc{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+
+/* ── PROBLEMA ──────────────────────────────── */
+.problem-section{background:var(--bg-card);}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px;}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+.pain-list li{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:var(--ink-soft);}
+.pain-icon{width:36px;height:36px;min-width:36px;border-radius:8px;background:rgba(181,52,26,.15);border:1px solid rgba(181,52,26,.3);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.pain-text strong{display:block;color:var(--ink);font-size:14px;margin-bottom:2px;}
+.opportunity-box{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:36px;}
+.opportunity-box h3{font-family:var(--display);font-size:22px;margin-bottom:16px;}
+.opp-items{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+.opp-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);}
+.opp-item::before{content:'→';color:var(--gold);font-weight:700;}
+
+/* ── SOLUCIÓN ──────────────────────────────── */
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;}
+.agent-card{background:var(--bg-card);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;}
+.agent-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.4);}
+.agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.agent-card.ventas::before{background:linear-gradient(90deg,var(--red),#FF6B35);}
+.agent-card.booking::before{background:linear-gradient(90deg,var(--gold),#F0A500);}
+.agent-card.postventa::before{background:linear-gradient(90deg,#2ECC71,#27AE60);}
+.agent-num{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.2em;margin-bottom:20px;}
+.agent-icon{font-size:36px;margin-bottom:16px;}
+.agent-name{font-family:var(--display);font-size:20px;margin-bottom:12px;}
+.agent-desc{font-size:13px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px;}
+.agent-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.agent-features li{font-size:12px;color:var(--ink-soft);display:flex;align-items:flex-start;gap:8px;}
+.agent-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.agent-badge{margin-top:20px;}
+
+/* ── CÓMO FUNCIONA ──────────────────────────── */
+.how-section{background:var(--bg-card);}
+.flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:60px;position:relative;}
+.flow-grid::before{content:'';position:absolute;top:30px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:0;}
+.flow-step{text-align:center;position:relative;z-index:1;}
+.flow-circle{width:60px;height:60px;border-radius:50%;background:var(--bg-card2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;}
+.flow-title{font-size:13px;font-weight:600;margin-bottom:8px;}
+.flow-desc{font-size:11px;color:var(--ink-mute);line-height:1.5;}
+
+/* ── ROI ────────────────────────────────────── */
+.roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px;}
+.roi-table{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+.roi-row{display:grid;grid-template-columns:1fr auto;padding:16px 24px;border-bottom:1px solid var(--line);align-items:center;}
+.roi-row:last-child{border-bottom:none;}
+.roi-row.total{background:rgba(201,168,76,.08);}
+.roi-label{font-size:13px;color:var(--ink-soft);}
+.roi-val{font-family:var(--mono);font-size:14px;color:var(--gold);font-weight:500;}
+.roi-val.big{font-size:20px;color:var(--gold-glow);}
+.roi-val.cost{color:var(--red-soft);}
+.roi-summary{display:flex;flex-direction:column;gap:20px;}
+.roi-kpi{background:var(--bg-card2);border:1px solid var(--line);border-radius:12px;padding:24px;}
+.roi-kpi-num{font-family:var(--display);font-size:42px;color:var(--gold);line-height:1;}
+.roi-kpi-label{font-size:13px;color:var(--ink-soft);margin-top:8px;}
+.roi-disclaimer{font-family:var(--mono);font-size:10px;color:var(--ink-mute);margin-top:12px;}
+
+/* ── CASO DE ÉXITO ──────────────────────────── */
+.cases-section{background:var(--bg-card);}
+.cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;}
+.case-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:32px;position:relative;}
+.case-logo{font-family:var(--display);font-size:22px;color:var(--gold);margin-bottom:8px;}
+.case-sector{font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;}
+.case-quote{font-family:var(--display);font-style:italic;font-size:15px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px;padding-left:20px;border-left:2px solid var(--gold);}
+.case-author{font-size:12px;color:var(--ink-mute);}
+.case-metrics{display:flex;gap:24px;margin-top:20px;padding-top:20px;border-top:1px solid var(--line);}
+.case-metric{}
+.case-metric-num{font-family:var(--mono);font-size:18px;color:var(--gold-glow);font-weight:500;}
+.case-metric-label{font-size:11px;color:var(--ink-mute);margin-top:2px;}
+
+/* ── PRICING ────────────────────────────────── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
+.price-card{background:var(--bg-card);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;transition:transform .2s;}
+.price-card:hover{transform:translateY(-2px);}
+.price-card.featured{border-color:rgba(201,168,76,.5);background:linear-gradient(135deg,var(--bg-card),rgba(201,168,76,.05));}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.price-card.starter::before{background:var(--line);}
+.price-card.featured::before{background:linear-gradient(90deg,var(--gold),var(--red));}
+.price-card.enterprise::before{background:var(--red);}
+.price-badge{position:absolute;top:16px;right:16px;background:var(--gold);color:#000;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.05em;}
+.price-plan{font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px;}
+.price-title{font-family:var(--display);font-size:22px;margin-bottom:20px;}
+.price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
+.price-currency{font-family:var(--mono);font-size:16px;color:var(--ink-mute);}
+.price-number{font-family:var(--display);font-size:52px;line-height:1;color:var(--gold);}
+.price-per{font-size:12px;color:var(--ink-mute);font-family:var(--mono);}
+.price-setup{font-size:12px;color:var(--ink-mute);margin-bottom:24px;}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:24px;padding-top:24px;border-top:1px solid var(--line);}
+.price-features li{font-size:13px;color:var(--ink-soft);display:flex;gap:10px;align-items:flex-start;}
+.price-features li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;}
+.price-cta{display:block;text-align:center;margin-top:28px;padding:12px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;}
+.price-cta.primary{background:var(--gold);color:#000;}
+.price-cta.primary:hover{background:var(--gold-glow);}
+.price-cta.ghost{border:1px solid var(--line);color:var(--ink-soft);}
+.price-cta.ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── TECH STACK ─────────────────────────────── */
+.stack-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;}
+.stack-pill{background:var(--bg-card2);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-family:var(--mono);font-size:11px;color:var(--ink-soft);}
+
+/* ── FINAL CTA ──────────────────────────────── */
+.final{padding:120px 24px;text-align:center;position:relative;overflow:hidden;}
+.final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(181,52,26,.2) 0%,transparent 70%);}
+.final-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.final h2{font-family:var(--display);font-size:clamp(30px,5vw,52px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 24px;}
+.final p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:40px;}
+.final-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:40px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);}
+.final-meta span strong{color:var(--ink-soft);}
+
+/* ── FOOTER ─────────────────────────────────── */
+footer{border-top:1px solid var(--line);padding:40px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-brand{font-family:var(--display);font-size:16px;color:var(--gold);}
+.footer-note{font-family:var(--mono);font-size:11px;color:var(--ink-mute);}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media(max-width:900px){
+  .hero-grid,.problem-grid,.roi-grid,.cases-grid{grid-template-columns:1fr;}
+  .agents-grid{grid-template-columns:1fr;}
+  .business-grid{grid-template-columns:1fr 1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .flow-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .flow-grid::before{display:none;}
+}
+@media(max-width:600px){
+  .business-grid{grid-template-columns:1fr;}
+}
+
+/* ── SCROLL ANIMATIONS ──────────────────────── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">Vibramente × Andrés Miami</div>
+  <div class="nav-cta">
+    <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20vi%20la%20propuesta%20para%20Andr%C3%A9s%20Carne%20de%20Res%20y%20quiero%20conocer%20m%C3%A1s." target="_blank">Hablar con Felipe →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow eyebrow">Propuesta Estratégica · Mr. Fox Agency × Vibramente</div>
+        <h1>Andrés Carne de Res Miami necesita una <em>fuerza digital</em> tan viva como su experiencia.</h1>
+        <p class="hero-lead">43 años de fiesta colombiana llegan a Miami Beach. Pero cada reserva perdida a las 2 AM, cada pregunta sin responder, cada cliente que no regresó… eso también llega en silencio. Tenemos la solución.</p>
+        <div class="hero-btns">
+          <a href="#solucion" class="btn btn-primary">Ver la solución ↓</a>
+          <a href="#pricing" class="btn btn-ghost">Ver inversión</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card fade-in">
+          <div class="hero-stats">
+            <div class="stat-box">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Pisos · hasta 240 p/c/u</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">6</div>
+              <div class="stat-label">Días/semana operando</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">100+</div>
+              <div class="stat-label">USD ticket promedio</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Consultas ignoradas</div>
+            </div>
+          </div>
+          <div class="ticker-wrap">
+            <div class="ticker-track">
+              <span class="ticker-item">Lincoln Road Miami Beach</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Fundado 1982 · Bogotá</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Restaurante · Bar · Salón</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Eventos Privados</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Live Entertainment</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Lincoln Road Miami Beach</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Fundado 1982 · Bogotá</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Restaurante · Bar · Salón</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Eventos Privados</span>
+              <span class="ticker-item">·</span>
+              <span class="ticker-item">Live Entertainment</span>
+              <span class="ticker-item">·</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- NEGOCIO -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">Análisis del negocio</div>
+    <h2 class="section-title fade-in">Entendemos lo que <em>Andrés</em> es.</h2>
+    <p class="section-lede fade-in">No es un restaurante. Es una obra de teatro donde el cliente es personaje. Eso cambia todo — incluyendo cómo debe operar la IA que lo represente.</p>
+    <div class="business-grid">
+      <div class="biz-card fade-in">
+        <div class="biz-icon">🎭</div>
+        <div class="biz-title">Experiencia inmersiva</div>
+        <div class="biz-desc">Personajes teatrales, sorpresas espontáneas, música en vivo. El cliente no compra una cena — compra un recuerdo. El agente IA debe venderlo así.</div>
+      </div>
+      <div class="biz-card fade-in">
+        <div class="biz-icon">🏛️</div>
+        <div class="biz-title">Tres venue en uno</div>
+        <div class="biz-desc">Infierno (240), Paraíso (240), Cielo (140). Tres atmósferas distintas, tres argumentos de venta distintos. El agente las domina todas.</div>
+      </div>
+      <div class="biz-card fade-in">
+        <div class="biz-icon">🎉</div>
+        <div class="biz-title">Eventos privados = Revenue mayor</div>
+        <div class="biz-desc">Un evento privado puede mover $5K–$30K en una noche. Cada consulta sin respuesta rápida es dinero que se va a otro venue de Lincoln Road.</div>
+      </div>
+      <div class="biz-card fade-in">
+        <div class="biz-icon">📱</div>
+        <div class="biz-title">WhatsApp ya activo</div>
+        <div class="biz-desc">Ya tienen botón WhatsApp en su web. Los clientes quieren hablar ahí. El agente entra exactamente donde el cliente ya está buscando respuestas.</div>
+      </div>
+      <div class="biz-card fade-in">
+        <div class="biz-icon">🌎</div>
+        <div class="biz-title">Cliente internacional</div>
+        <div class="biz-desc">Miami Beach atrae turistas globales. Reservas llegan de todas las zonas horarias, en varios idiomas. El agente opera 24/7 en inglés y español.</div>
+      </div>
+      <div class="biz-card fade-in">
+        <div class="biz-icon">⭐</div>
+        <div class="biz-title">Reviews 5 estrellas</div>
+        <div class="biz-desc">"Service was very good, everyone was friendly" — pero hay experiencias post-visita sin capturar. El agente cierra ese loop con NPS automatizado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROBLEMA -->
+<section class="problem-section">
+  <div class="container">
+    <div class="section-label fade-in">El problema real</div>
+    <h2 class="section-title fade-in">Cada noche hay <em>revenue</em> que se escapa.</h2>
+    <div class="problem-grid">
+      <div>
+        <ul class="pain-list">
+          <li class="fade-in">
+            <div class="pain-icon">🌙</div>
+            <div class="pain-text">
+              <strong>Consultas a las 2 AM sin respuesta</strong>
+              Alguien vio un reel en TikTok, quiere reservar para su cumpleaños. No hay nadie. Al día siguiente ya eligió otro lugar.
+            </div>
+          </li>
+          <li class="fade-in">
+            <div class="pain-icon">📋</div>
+            <div class="pain-text">
+              <strong>Formulario Tripleseat = fricción</strong>
+              El proceso de solicitar un evento privado requiere llenar un formulario frío. Los clientes premium quieren conversación, no formularios.
+            </div>
+          </li>
+          <li class="fade-in">
+            <div class="pain-icon">💸</div>
+            <div class="pain-text">
+              <strong>Sin upsell post-reserva</strong>
+              El cliente reservó mesa. Nadie le ofreció botella de welcome, package especial de cumpleaños, o upgrade al piso VIP.
+            </div>
+          </li>
+          <li class="fade-in">
+            <div class="pain-icon">🔄</div>
+            <div class="pain-text">
+              <strong>Sin retención activa</strong>
+              ¿Cuántos clientes vinieron una vez y no volvieron? Sin seguimiento post-visita, no hay segunda visita.
+            </div>
+          </li>
+          <li class="fade-in">
+            <div class="pain-icon">🗣️</div>
+            <div class="pain-text">
+              <strong>Preguntas repetitivas saturan al staff</strong>
+              "¿Cuánto cuesta una reserva?", "¿Hay parqueo?", "¿Cuál es el dress code?". El equipo responde lo mismo 50 veces al día.
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="opportunity-box fade-in">
+          <p class="eyebrow" style="margin-bottom:8px;">La oportunidad</p>
+          <h3>Andrés Miami tiene todo para generar 30–50% más revenue <em>sin abrir más horas</em>.</h3>
+          <p style="font-size:14px;color:var(--ink-soft);margin-top:12px;">La demanda está ahí. Los leads llegan. El producto es excepcional. Lo que falta es una capa digital que capture, convierta y retenga a esos clientes — a escala, 24/7, con la energía de la marca.</p>
+          <div class="opp-items">
+            <div class="opp-item">Eventos privados sin fricción de formulario</div>
+            <div class="opp-item">Reservas automáticas fuera de horario laboral</div>
+            <div class="opp-item">Upsell de botellas, paquetes y pisos premium</div>
+            <div class="opp-item">Seguimiento post-visita que genera recurrencia</div>
+            <div class="opp-item">Staff liberado para atención de alta calidad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SOLUCIÓN -->
+<section id="solucion">
+  <div class="container">
+    <div class="section-label fade-in">La solución</div>
+    <h2 class="section-title fade-in">Tres agentes de IA.<br/><em>Una sola experiencia de marca.</em></h2>
+    <p class="section-lede fade-in">No son chatbots genéricos. Son agentes entrenados con el alma de Andrés — la energía, el menú, los pisos, el espíritu colombiano — y conectados a sus sistemas reales.</p>
+    <div class="agents-grid">
+
+      <!-- AGENTE 1: VENTAS -->
+      <div class="agent-card ventas fade-in">
+        <div class="agent-num">AGENTE 01</div>
+        <div class="agent-icon">🔥</div>
+        <div class="agent-name">Agente de Ventas & Eventos</div>
+        <div class="agent-desc">Califica leads de eventos privados como si fuera tu mejor vendedor. Opera en WhatsApp y web, 24/7, con el pitch perfecto para cada perfil de cliente.</div>
+        <ul class="agent-features">
+          <li>Califica presupuesto y tamaño del grupo en la primera conversación</li>
+          <li>Presenta Infierno, Paraíso y Cielo con argumentos personalizados</li>
+          <li>Agenda llamada con el equipo de eventos para cierres</li>
+          <li>Envía cotización automática con propuesta visual</li>
+          <li>Hace seguimiento hasta confirmar o descartar el lead</li>
+        </ul>
+        <div class="agent-badge"><span class="tag red">Alta prioridad</span></div>
+      </div>
+
+      <!-- AGENTE 2: BOOKING -->
+      <div class="agent-card booking fade-in">
+        <div class="agent-num">AGENTE 02</div>
+        <div class="agent-icon">🗓️</div>
+        <div class="agent-name">Asistente de Reservas & Concierge</div>
+        <div class="agent-desc">El concierge digital que nunca duerme. Responde preguntas de reservas, dress code, menú, parqueo, accesibilidad — y confirma bookings con un toque de calidez colombiana.</div>
+        <ul class="agent-features">
+          <li>FAQ 24/7: horarios, menú, acceso, parqueo, precios</li>
+          <li>Guía el booking hacia Tripleseat con pre-calificación</li>
+          <li>Detecta cumpleaños, aniversarios y ocasiones especiales</li>
+          <li>Ofrece upgrades: botellas, pisos premium, experiencias add-on</li>
+          <li>Confirmación y recordatorio de reserva automatizado</li>
+        </ul>
+        <div class="agent-badge"><span class="tag" style="background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.3);color:var(--gold);">Core del sistema</span></div>
+      </div>
+
+      <!-- AGENTE 3: POST-VENTA -->
+      <div class="agent-card postventa fade-in">
+        <div class="agent-num">AGENTE 03</div>
+        <div class="agent-icon">💛</div>
+        <div class="agent-name">Agente Post-Venta & Fidelización</div>
+        <div class="agent-desc">El cliente visitó Andrés. Ahora hay que convertirlo en embajador. Este agente captura feedback, gestiona experiencias negativas antes de que lleguen a Google, y genera retorno.</div>
+        <ul class="agent-features">
+          <li>Mensaje post-visita a las 24h solicitando feedback</li>
+          <li>Manejo de experiencias negativas con protocolo de recuperación</li>
+          <li>Invitación a regresar con oferta personalizada (fecha especial, etc.)</li>
+          <li>Solicita reseña a clientes satisfechos (Google/TripAdvisor)</li>
+          <li>Segmenta clientes VIP y frecuentes para trato diferencial</li>
+        </ul>
+        <div class="agent-badge"><span class="tag" style="background:rgba(46,204,113,.1);border-color:rgba(46,204,113,.3);color:#2ECC71;">Retención</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CÓMO FUNCIONA -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-label fade-in">Flujo operativo</div>
+    <h2 class="section-title fade-in">Cómo funciona en la <em>práctica real.</em></h2>
+    <p class="section-lede fade-in">Implementación 100% remota. Sin instalar nada en el local. Operativo en 3-4 semanas.</p>
+    <div class="flow-grid">
+      <div class="flow-step fade-in">
+        <div class="flow-circle">📲</div>
+        <div class="flow-title">Cliente contacta</div>
+        <div class="flow-desc">WhatsApp, web chat, Instagram DM — el agente detecta la intención</div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-circle">🧠</div>
+        <div class="flow-title">IA califica</div>
+        <div class="flow-desc">Detecta si es evento privado, reserva regular, pregunta o queja</div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-circle">⚡</div>
+        <div class="flow-title">Responde y convierte</div>
+        <div class="flow-desc">Cotiza, agenda, confirma o escala al equipo humano si es necesario</div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-circle">🤝</div>
+        <div class="flow-title">Handoff al equipo</div>
+        <div class="flow-desc">El agente transfiere leads calificados al team con contexto completo</div>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-circle">🔄</div>
+        <div class="flow-title">Post-visita</div>
+        <div class="flow-desc">Feedback, reseña, reactivación — el loop completo, automatizado</div>
+      </div>
+    </div>
+    <div style="margin-top:48px;" class="fade-in">
+      <p class="eyebrow" style="margin-bottom:16px;">Stack tecnológico</p>
+      <div class="stack-row">
+        <span class="stack-pill">WhatsApp Business API</span>
+        <span class="stack-pill">Claude AI (Anthropic)</span>
+        <span class="stack-pill">n8n Automation</span>
+        <span class="stack-pill">Tripleseat Integration</span>
+        <span class="stack-pill">Google Sheets / CRM</span>
+        <span class="stack-pill">SMS / Email</span>
+        <span class="stack-pill">Instagram DM (opcional)</span>
+        <span class="stack-pill">Dashboard en tiempo real</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ROI -->
+<section>
+  <div class="container">
+    <div class="section-label fade-in">Retorno de inversión</div>
+    <h2 class="section-title fade-in">Los números hablan <em>solos.</em></h2>
+    <p class="section-lede fade-in">Escenario conservador, con sólo capturar una fracción del revenue que hoy se pierde. Sin contar ahorro en tiempo del staff.</p>
+    <div class="roi-grid">
+      <div>
+        <div class="roi-table fade-in">
+          <div class="roi-row">
+            <span class="roi-label">Consultas WhatsApp / mes (estimado)</span>
+            <span class="roi-val">300</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Tasa conversión reservas regulares (12%)</span>
+            <span class="roi-val">36 bookings</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Ticket promedio mesa × 4 personas</span>
+            <span class="roi-val">$280</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Revenue adicional reservas regulares</span>
+            <span class="roi-val">$10,080</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Eventos privados convertidos / mes (2)</span>
+            <span class="roi-val">2 eventos</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Promedio evento privado</span>
+            <span class="roi-val">$12,000</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Revenue adicional eventos privados</span>
+            <span class="roi-val">$24,000</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Upsell (botellas, upgrades, packages)</span>
+            <span class="roi-val">$3,200</span>
+          </div>
+          <div class="roi-row total">
+            <span class="roi-label" style="font-weight:600;color:var(--ink);">Revenue adicional total / mes</span>
+            <span class="roi-val big">$37,280</span>
+          </div>
+          <div class="roi-row">
+            <span class="roi-label">Inversión mensual (plan completo)</span>
+            <span class="roi-val cost">$3,000</span>
+          </div>
+          <div class="roi-row total">
+            <span class="roi-label" style="font-weight:600;color:var(--ink);">ROI mensual estimado</span>
+            <span class="roi-val big">1,143%</span>
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);margin-top:12px;">* Proyección conservadora. Los resultados reales dependen del volumen de tráfico existente y calidad de atención anterior. Primeros 90 días son de optimización y calibración.</p>
+      </div>
+      <div class="roi-summary">
+        <div class="roi-kpi fade-in">
+          <div class="roi-kpi-num">11×</div>
+          <div class="roi-kpi-label">Retorno por cada dólar invertido (escenario conservador)</div>
+        </div>
+        <div class="roi-kpi fade-in">
+          <div class="roi-kpi-num">3–4 sem.</div>
+          <div class="roi-kpi-label">Tiempo hasta tener el sistema operativo y generando resultados</div>
+        </div>
+        <div class="roi-kpi fade-in">
+          <div class="roi-kpi-num">100%</div>
+          <div class="roi-kpi-label">Implementación remota. Sin interrumpir la operación del restaurante</div>
+        </div>
+        <div class="roi-kpi fade-in" style="background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.3);">
+          <div class="roi-kpi-num" style="font-size:26px;color:var(--gold-glow);">+ Ahorro Staff</div>
+          <div class="roi-kpi-label">El agente maneja ~150 consultas repetitivas/mes que hoy consumen tiempo del equipo. Eso se traduce en mejor atención en sala y reducción de carga operativa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CASOS DE ÉXITO -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label fade-in">Casos reales de Vibramente</div>
+    <h2 class="section-title fade-in">La metodología ya está <em>transformando empresas.</em></h2>
+    <p class="section-lede fade-in">No vendemos promesas. Vendemos resultados probados en negocios latinoamericanos con desafíos similares a los de Andrés Miami.</p>
+    <div class="cases-grid">
+      <div class="case-card fade-in">
+        <div class="case-logo">Club Los Chillos</div>
+        <div class="case-sector">Sector: Gastronomía & Operaciones · Ecuador</div>
+        <div class="case-quote">"Desde que implementamos IA agéntica, hemos desarrollado estrategias que harán ahorrar a la compañía miles de dólares al año. Temas de gastos y operaciones que antes tomaban mucho tiempo y recursos, ahora los hacemos en minutos."</div>
+        <div class="case-author">— Elisa Salgado, CEO · Club Los Chillos</div>
+        <div class="case-metrics">
+          <div class="case-metric">
+            <div class="case-metric-num">Miles $</div>
+            <div class="case-metric-label">Ahorro anual en ops</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">Minutos</div>
+            <div class="case-metric-label">vs horas en procesos</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <div class="case-logo">Factory Bike Ecuador</div>
+        <div class="case-sector">Sector: Retail + Servicio al cliente · 40+ puntos de venta</div>
+        <div class="case-quote">"Pensamos en una expansión internacional y sabemos que tenemos el servicio al cliente más personalizado en el sector de motocicletas del Ecuador. Tener una estrategia agéntica cambió las reglas del juego."</div>
+        <div class="case-author">— CEO · Factory Bike Ecuador</div>
+        <div class="case-metrics">
+          <div class="case-metric">
+            <div class="case-metric-num">70%</div>
+            <div class="case-metric-label">Consultas automatizadas</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-num">24/7</div>
+            <div class="case-metric-label">Atención activa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding:28px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:16px;" class="fade-in">
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+        <div>
+          <p class="eyebrow" style="margin-bottom:6px;">Credenciales del implementador</p>
+          <p style="font-size:14px;color:var(--ink-soft);line-height:1.6;max-width:700px;">Felipe Salgado — Asesor de <strong>UNICEF Chile</strong> en fundraising con IA · Mentor ETHDenver 2023 & 2025 · Finalista Startup World Cup Silicon Valley 2023 · Fundador primera escuela IA de Ecuador · Arquitecto de soluciones agénticas para empresas en Ecuador, Colombia y USA.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-label fade-in">Modelo de inversión</div>
+    <h2 class="section-title fade-in">Transparente. Escalable. <em>ROI claro.</em></h2>
+    <p class="section-lede fade-in">Sin contratos de 12 meses forzosos. Sin letra pequeña. El modelo es simple: si el sistema no genera valor visible en 90 días, lo ajustamos o lo detenemos.</p>
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="price-card starter fade-in">
+        <div class="price-plan">Plan Inicio</div>
+        <div class="price-title">Agente Concierge</div>
+        <div class="price-amount">
+          <span class="price-currency">USD</span>
+          <span class="price-number">1,500</span>
+        </div>
+        <div class="price-per">/mes</div>
+        <div class="price-setup">+ USD 2,500 setup único</div>
+        <ul class="price-features">
+          <li>Agente WhatsApp FAQ 24/7 (reservas, menú, horarios, dress code)</li>
+          <li>Detección de ocasiones especiales y upsell básico</li>
+          <li>Confirmación y recordatorio de reserva</li>
+          <li>Dashboard de conversaciones y KPIs</li>
+          <li>Soporte mensual 4 horas</li>
+          <li>Idiomas: español e inglés</li>
+        </ul>
+        <a href="https://wa.me/593999793094?text=Interesado%20en%20el%20Plan%20Inicio%20para%20Andr%C3%A9s%20Miami" target="_blank" class="price-cta ghost">Consultar →</a>
+      </div>
+
+      <!-- FEATURED -->
+      <div class="price-card featured fade-in">
+        <div class="price-badge">Recomendado</div>
+        <div class="price-plan">Plan Completo</div>
+        <div class="price-title">Los 3 Agentes</div>
+        <div class="price-amount">
+          <span class="price-currency">USD</span>
+          <span class="price-number">3,000</span>
+        </div>
+        <div class="price-per">/mes</div>
+        <div class="price-setup">+ USD 5,000 setup único</div>
+        <ul class="price-features">
+          <li>Agente Ventas & Eventos Privados (WhatsApp + Web)</li>
+          <li>Agente Concierge de Reservas 24/7</li>
+          <li>Agente Post-Venta & Fidelización</li>
+          <li>Integración Tripleseat + CRM básico</li>
+          <li>Upsell de botellas, packages y upgrades de piso</li>
+          <li>NPS automatizado post-visita</li>
+          <li>Gestión de reseñas Google / TripAdvisor</li>
+          <li>Soporte mensual 10 horas + revisión mensual</li>
+          <li>Dashboard ejecutivo en tiempo real</li>
+        </ul>
+        <a href="https://wa.me/593999793094?text=Quiero%20el%20Plan%20Completo%20para%20Andr%C3%A9s%20Carne%20de%20Res%20Miami" target="_blank" class="price-cta primary">Comenzar ahora →</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="price-card enterprise fade-in">
+        <div class="price-plan">Plan Premium</div>
+        <div class="price-title">Agente + Revenue Share</div>
+        <div class="price-amount">
+          <span class="price-currency">USD</span>
+          <span class="price-number">800</span>
+        </div>
+        <div class="price-per">/mes + 3% revenue generado</div>
+        <div class="price-setup">+ USD 5,000 setup único</div>
+        <ul class="price-features">
+          <li>Todo lo del Plan Completo</li>
+          <li>Skin totalmente personalizado con identidad Andrés</li>
+          <li>Modelo de pago ligado al resultado real</li>
+          <li>Tracking atribuible: agente → reserva → revenue</li>
+          <li>Optimización continua (A/B de respuestas, conversiones)</li>
+          <li>Reportes semanales de performance</li>
+          <li>Escalable a otras ubicaciones futuras</li>
+        </ul>
+        <a href="https://wa.me/593999793094?text=Me%20interesa%20el%20modelo%20Revenue%20Share%20para%20Andr%C3%A9s%20Miami" target="_blank" class="price-cta ghost">Evaluar juntos →</a>
+      </div>
+
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="fade-in">
+      <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:8px;">🚀</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Sin contrato mínimo</div>
+        <div style="font-size:12px;color:var(--ink-mute);">Mensual. Cancela cuando quieras con 30 días de aviso.</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:8px;">🛡️</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Garantía 90 días</div>
+        <div style="font-size:12px;color:var(--ink-mute);">Si no ves resultados medibles en 90 días, ajustamos sin costo adicional.</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:8px;">🌐</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">100% remoto</div>
+        <div style="font-size:12px;color:var(--ink-mute);">Configuración, implementación y soporte sin pisar Miami.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-inner">
+    <div class="eyebrow" style="color:var(--gold);letter-spacing:.3em;">Siguiente paso</div>
+    <h2>La fiesta de Andrés no duerme.<br/>Ahora su <em>inteligencia</em> tampoco.</h2>
+    <p>Una llamada de 30 minutos con Felipe Salgado para validar el ajuste, ver un demo en vivo con los datos reales de Andrés Miami, y definir el plan de implementación. Sin compromiso.</p>
+    <div class="hero-btns" style="justify-content:center;">
+      <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20vi%20la%20propuesta%20para%20Andr%C3%A9s%20Carne%20de%20Res%20Miami%20y%20quiero%20agendar%20una%20sesi%C3%B3n%20de%20descubrimiento%20de%2030%20minutos." target="_blank" class="btn btn-primary" style="font-size:15px;padding:16px 32px;">
+        📲 Agendar sesión gratis en WhatsApp
+      </a>
+      <a href="mailto:hola@vibramente.studio?subject=Propuesta%20Andres%20Carne%20de%20Res%20Miami%20-%20Consulta" class="btn btn-ghost" style="font-size:15px;">
+        Enviar email
+      </a>
+    </div>
+    <div class="final-meta">
+      <span>Propuesta para · <strong>Andrés Carne de Res Miami</strong></span>
+      <span>Presentada por · <strong>Vibramente / Felipe Salgado</strong></span>
+      <span>Agencia · <strong>Mr. Fox</strong></span>
+      <span>Implementación · <strong>100% remota</strong></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Vibramente · AI Solutions</div>
+  <div class="footer-note">Propuesta confidencial preparada para Andrés Carne de Res Miami · 2026</div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
