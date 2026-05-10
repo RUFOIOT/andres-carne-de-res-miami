@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrés Carne de Res Miami × Vibramente AI — Propuesta v3</title>
+  <title>Andrés Carne de Res Miami × Vibramente AI — Propuesta v3 Final</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
@@ -422,6 +422,50 @@
     .footer-text { font-size: 11px; color: var(--text-muted); }
 
     /* ==============================
+       PAIN → SOLUTION GRID
+    ============================== */
+    .pain-solution-grid {
+      display: flex; flex-direction: column; gap: 2px;
+      border: 1px solid var(--dark-border); border-radius: 12px; overflow: hidden;
+    }
+    .ps-row {
+      display: grid; grid-template-columns: 1fr 44px 1fr;
+      align-items: center;
+      background: var(--dark-card);
+      border-bottom: 1px solid var(--dark-border);
+      transition: background .25s;
+    }
+    .ps-row:last-child { border-bottom: none; }
+    .ps-row:hover { background: var(--dark-card2); }
+    .ps-pain {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 22px 28px;
+      border-right: 1px solid var(--dark-border);
+    }
+    .ps-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .ps-pain-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: #e53935; margin-bottom: 5px;
+    }
+    .ps-pain-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+    .ps-arrow {
+      text-align: center; font-size: 1.3rem; font-weight: 900;
+      color: var(--fox-orange); padding: 0;
+    }
+    .ps-solution { padding: 22px 28px; }
+    .ps-sol-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--fox-orange); margin-bottom: 5px;
+    }
+    .ps-sol-text { font-size: 0.86rem; color: var(--text-light); line-height: 1.6; }
+    .ps-sol-text strong { color: var(--fox-gold-light); }
+    @media (max-width: 768px) {
+      .ps-row { grid-template-columns: 1fr; }
+      .ps-arrow { display: none; }
+      .ps-pain { border-right: none; border-bottom: 1px solid rgba(255,101,0,0.15); }
+    }
+
+    /* ==============================
        SCROLL ANIMATIONS
     ============================== */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
@@ -473,7 +517,7 @@
         <div class="brand-sub">× Andrés Carne de Res Miami</div>
       </div>
     </div>
-    <div class="nav-badge">Propuesta v3 · 2026</div>
+    <div class="nav-badge">Propuesta Final v3 · 2026</div>
   </nav>
 
   <!-- ========== HERO ========== -->
@@ -481,15 +525,14 @@
     <div class="hero-bg"></div>
     <div class="hero-confetti" id="confetti"></div>
 
-    <div class="hero-badge">🎯 Propuesta Estratégica v3 · 2026</div>
+    <div class="hero-badge">🎯 Propuesta Final v3 · 2026</div>
 
     <h1>
-      Andrés Carne de Res Miami<br/>
-      <span class="accent">necesita IA tan viva</span><br/>
-      como su fiesta.
+      Andrés Miami tiene el tráfico.<br/>
+      Le falta <span class="accent">convertirlo.</span>
     </h1>
     <p class="hero-sub">
-      43 años de energía colombiana llegan a Miami Beach. Ahora con inteligencia artificial que genera leads, convierte al instante, llena tu agenda vía booking y multiplica ingresos con upsells inteligentes.
+      11,594 visitas orgánicas al mes. LCP de 20.5s. Cero sistema de conversión activo. Un agente de IA resuelve todo eso — captura leads, convierte con booking y multiplica con upsells. 24/7, sin staff adicional.
     </p>
 
     <div class="hero-logos">
@@ -530,25 +573,26 @@
   <!-- ========== STATS ========== -->
   <div class="stats-bar">
     <div class="container">
-      <div class="stat-item reveal"><div class="stat-num">3</div><div class="stat-label">Pisos · hasta 240 p/c/u</div></div>
-      <div class="stat-item reveal"><div class="stat-num">6</div><div class="stat-label">Días/semana operando</div></div>
-      <div class="stat-item reveal"><div class="stat-num">$100+</div><div class="stat-label">Ticket promedio USD</div></div>
-      <div class="stat-item reveal"><div class="stat-num">24/7</div><div class="stat-label">Consultas sin respuesta</div></div>
+      <div class="stat-item reveal"><div class="stat-num">11,594</div><div class="stat-label">Visitas orgánicas/mes<br/>sin conversión activa</div></div>
+      <div class="stat-item reveal"><div class="stat-num">20.5s</div><div class="stat-label">LCP actual del sitio<br/>Meta: &lt;2.5s</div></div>
+      <div class="stat-item reveal"><div class="stat-num">$0</div><div class="stat-label">Paid traffic activo<br/>ni remarketing</div></div>
+      <div class="stat-item reveal"><div class="stat-num">0%</div><div class="stat-label">Upsells post-reserva<br/>capturados hoy</div></div>
     </div>
   </div>
 
   <!-- ========== PROBLEM ========== -->
   <section>
     <div class="container">
-      <div class="section-eyebrow reveal">El problema real</div>
-      <h2 class="section-title reveal">Cada noche hay revenue<br/>que se escapa.</h2>
+      <div class="section-eyebrow reveal">Diagnóstico · Mr. Fox Audit · andresmiami.us</div>
+      <h2 class="section-title reveal">El tráfico existe.<br/>El problema es lo que pasa después.</h2>
+      <p class="section-desc reveal" style="margin-bottom:0;">Datos reales del sitio. Estos son los 6 puntos que están bloqueando el revenue hoy.</p>
       <div class="problem-grid">
-        <div class="problem-card reveal"><div class="problem-icon">🌙</div><div class="problem-title">Consultas a las 2 AM sin respuesta</div><div class="problem-desc">Alguien vio un reel en TikTok, quiere reservar para su cumpleaños. No hay nadie. Al día siguiente eligió otro venue de Lincoln Road.</div></div>
-        <div class="problem-card reveal"><div class="problem-icon">📋</div><div class="problem-title">Formulario Tripleseat = fricción</div><div class="problem-desc">El proceso de eventos privados requiere formulario frío. Los clientes premium quieren conversación, no burocracia.</div></div>
-        <div class="problem-card reveal"><div class="problem-icon">💸</div><div class="problem-title">Sin upsell post-reserva</div><div class="problem-desc">El cliente reservó mesa. Nadie le ofreció botella de welcome, package de cumpleaños, o upgrade al piso VIP.</div></div>
-        <div class="problem-card reveal"><div class="problem-icon">🔄</div><div class="problem-title">Sin retención activa</div><div class="problem-desc">¿Cuántos clientes vinieron una vez y no volvieron? Sin seguimiento post-visita, no hay segunda visita.</div></div>
-        <div class="problem-card reveal"><div class="problem-icon">🗣️</div><div class="problem-title">Staff saturado de FAQs</div><div class="problem-desc">"¿Cuánto cuesta una reserva?", "¿Hay parqueo?", "¿Cuál es el dress code?". El equipo responde lo mismo 50 veces al día.</div></div>
-        <div class="problem-card reveal"><div class="problem-icon">🌎</div><div class="problem-title">Cliente internacional sin soporte</div><div class="problem-desc">Miami Beach atrae turistas globales. Reservas llegan de todas las zonas horarias, en varios idiomas. Nadie opera 24/7.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🐌</div><div class="problem-title">Sitio lento: LCP 20.5s (meta: 2.5s)</div><div class="problem-desc">Rendimiento actual: <strong style="color:var(--fox-orange)">50/100</strong>. Cada segundo extra de carga es una reserva que se pierde antes de llegar al botón de "reservar". Google lo penaliza en rankings también.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">📉</div><div class="problem-title">11,594 visitas/mes que no convierten</div><div class="problem-desc">342 keywords posicionadas. Domain Authority 24. <strong style="color:var(--fox-orange)">Paid Keywords: 0</strong>. Todo ese tráfico orgánico llega y se va — sin nadie que lo capture o convierta en tiempo real.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🌙</div><div class="problem-title">Consultas fuera de horario sin respuesta</div><div class="problem-desc">Un turista en otra zona horaria ve un reel a las 2 AM, quiere reservar para su cumpleaños. No hay nadie. Al día siguiente eligió otro venue de Lincoln Road.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">💸</div><div class="problem-title">Cero upsell post-reserva</div><div class="problem-desc">El cliente reservó mesa. Nadie le ofreció botella, package de cumpleaños ni upgrade VIP. Meta: <strong style="color:var(--fox-orange)">costo de adquisición &lt;10% del ticket promedio</strong> — sin upsell, eso no se logra.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🔄</div><div class="problem-title">Sin remarketing ni retención activa</div><div class="problem-desc">Sin campañas Meta/Google activas y sin follow-up post-visita, la primera visita es la única. <strong style="color:var(--fox-orange)">Meta: 10% de consultas web → reserva</strong>. Hoy ese número es prácticamente 0.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🗣️</div><div class="problem-title">Staff saturado respondiendo FAQs</div><div class="problem-desc">"¿Hay parqueo?", "¿Cuál es el dress code?", "¿Cuánto cuesta una reserva?". El equipo responde lo mismo 50+ veces al día — tiempo que debería dedicarse a cerrar eventos de $5K–$30K.</div></div>
       </div>
     </div>
   </section>
@@ -556,40 +600,82 @@
   <!-- ========== PARALLAX 1 ========== -->
   <div class="parallax-banner fox">
     <div class="pb-content reveal">
-      <div class="pb-quote">"La demanda está ahí. Los leads llegan. El producto es excepcional. Lo que falta es la capa digital que los capture — a escala, 24/7."</div>
-      <div class="pb-sub">Andrés Miami puede generar 30–50% más revenue sin abrir más horas</div>
+      <div class="pb-quote">"11,594 visitas al mes y 0 sistema de conversión activo. Eso no es un problema de tráfico — es un problema de captura. El agente lo resuelve."</div>
+      <div class="pb-sub">Un solo agente captura, convierte y maximiza cada visita · 24/7 · sin staff adicional</div>
     </div>
   </div>
 
   <!-- ========== AGENTS ========== -->
   <section id="agents">
     <div class="container">
-      <div class="section-eyebrow text-center reveal">La solución</div>
-      <h2 class="section-title text-center reveal">Un solo agente de IA entrenado<br/>con el alma de Andrés.</h2>
-      <p class="section-desc text-center reveal">No es un chatbot genérico. Es un agente que conoce el menú, los pisos, el espíritu colombiano — y genera leads, convierte con booking y multiplica ingresos con upsells, todo en uno.</p>
-      <div style="display:flex;justify-content:center;margin-top:48px;">
-        <div class="agent-card a1 reveal" style="max-width:780px;width:100%;">
+      <div class="section-eyebrow text-center reveal">La solución · Punto de dolor → Respuesta del agente</div>
+      <h2 class="section-title text-center reveal">Un agente. Seis problemas resueltos.</h2>
+      <p class="section-desc text-center reveal">Cada punto del diagnóstico tiene una respuesta directa. Así es como el agente ataca cada dolor:</p>
+      <!-- PAIN → SOLUTION MAPPING -->
+      <div class="pain-solution-grid reveal" style="margin-top:48px;">
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">🐌</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">Sitio lento (LCP 20.5s) — los leads se van antes de reservar</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text">Captura al lead por <strong>WhatsApp antes de que abandone</strong> el sitio. La conversación de reserva ocurre en el canal móvil — independiente de la velocidad web.</div></div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">📉</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">11,594 visitas/mes orgánicas que no convierten — 0 sistema de captura activo</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text">Convierte el tráfico orgánico existente en reservas reales. Meta: <strong>10% de consultas web → reserva confirmada</strong>. Sin gastar un dólar más en ads.</div></div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">🌙</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">Turistas en otras zonas horarias sin respuesta a las 2 AM</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text">Opera <strong>24/7 en inglés, español y multilenguaje</strong>. Cada consulta recibe respuesta inmediata. Booking confirmado antes de que el turista cierre la pantalla.</div></div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">💸</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">Cero upsell post-reserva — dinero que se deja en cada mesa</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text">Detecta cumpleaños, grupos y ocasiones especiales. <strong>Ofrece botella, upgrade VIP y packages</strong> en el momento exacto post-reserva. Ticket promedio sube por cada cliente.</div></div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">🔄</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">Sin remarketing — Paid Keywords: 0. Sin retención post-visita activa</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text">Seguimiento automático a las <strong>24h post-visita</strong> con oferta personalizada. Segmenta VIPs. Solicita reseñas Google / TripAdvisor a clientes satisfechos.</div></div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-pain"><span class="ps-icon">🗣️</span><div><div class="ps-pain-label">Problema</div><div class="ps-pain-text">Staff respondiendo las mismas FAQs 50+ veces al día</div></div></div>
+          <div class="ps-arrow">→</div>
+          <div class="ps-solution"><div class="ps-sol-label">El agente</div><div class="ps-sol-text"><strong>FAQ 100% automatizado</strong>: horarios, menú, dress code, parqueo, precios, Tripleseat. El equipo humano se enfoca en cerrar eventos de $5K–$30K.</div></div>
+        </div>
+
+      </div>
+
+      <!-- AGENT SUMMARY -->
+      <div style="display:flex;justify-content:center;margin-top:56px;">
+        <div class="agent-card a1 reveal" style="max-width:760px;width:100%;">
           <div class="agent-num">El Agente · Vibramente AI</div>
           <div class="agent-icon">🤖</div>
           <div class="agent-title">Agente IA Comercial — Andrés Miami</div>
-          <div class="agent-desc">Un solo agente con tres modos de operación: genera leads calificados, los convierte en tiempo real vía booking y maximiza el ticket de cada cliente con upsells inteligentes. Opera 24/7 con la energía y el alma de la marca.</div>
+          <div class="agent-desc">Un solo sistema que opera en WhatsApp, web y canales digitales — entrenado con el menú, los pisos, la cultura de la marca y el comportamiento del consumidor Miami (local 18-45 + turista internacional). Convierte tráfico en revenue sin staff adicional.</div>
           <ul class="agent-features">
-            <li>Genera y califica leads desde WhatsApp, web y redes sociales, 24/7</li>
-            <li>Califica presupuesto y tamaño del grupo en la primera conversación</li>
-            <li>Convierte el interés en booking confirmado en segundos — sin fricción</li>
-            <li>Guía la reserva hacia Tripleseat con pre-calificación automática</li>
-            <li>Detecta cumpleaños, aniversarios y ocasiones especiales para personalizar</li>
-            <li>Upsells automáticos: botellas, pisos premium, packages VIP en el momento exacto</li>
-            <li>FAQ 24/7: horarios, menú, dress code, parqueo, precios en inglés y español</li>
-            <li>Seguimiento post-visita + gestión de reseñas Google / TripAdvisor</li>
-            <li>Segmenta clientes VIP y frecuentes para trato diferencial</li>
-            <li>Aprende y mejora con cada interacción — más efectivo semana a semana</li>
+            <li>Captura leads de las 11,594 visitas orgánicas/mes que hoy no convierten</li>
+            <li>Convierte consultas en bookings confirmados en menos de 60 segundos</li>
+            <li>Integración directa Tripleseat / OpenTable — sin formularios fríos</li>
+            <li>Upsells automáticos: botellas, pisos VIP, packages especiales y Happy Hour</li>
+            <li>Adapta mensajes: local Miami (18–45) vs turista internacional</li>
+            <li>Follow-up post-visita + reseñas Google / TripAdvisor gestionadas</li>
+            <li>Dashboard: consultas → reservas → revenue atribuible en tiempo real</li>
+            <li>Aprende de cada interacción — más efectivo semana a semana</li>
           </ul>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
             <span class="agent-tag">Generación de leads</span>
             <span class="agent-tag">Conversión inmediata</span>
             <span class="agent-tag">Booking automatizado</span>
             <span class="agent-tag">Upsells inteligentes</span>
+            <span class="agent-tag">Retención activa</span>
+            <span class="agent-tag">FAQ 24/7</span>
           </div>
         </div>
       </div>
@@ -599,8 +685,8 @@
   <!-- ========== PARALLAX 2 ========== -->
   <div class="parallax-banner dark">
     <div class="pb-content reveal">
-      <div class="pb-quote" style="color: var(--fox-gold);">"Implementación 100% remota. Sin instalar nada en el local. Operativo en semanas."</div>
-      <div class="pb-sub" style="color:#666;">WhatsApp Business API · Claude AI · n8n Automation · Tripleseat · Google Sheets</div>
+      <div class="pb-quote" style="color: var(--fox-gold);">"Implementación 100% remota. Sin tocar el sitio. Operativo en semanas. El agente captura leads mientras el SEO se optimiza en paralelo."</div>
+      <div class="pb-sub" style="color:#666;">WhatsApp Business API · Claude AI · n8n Automation · Tripleseat / OpenTable · Google Sheets</div>
     </div>
   </div>
 
@@ -608,9 +694,9 @@
   <section id="pricing">
     <div class="container">
       <div class="pricing-intro">
-        <div class="section-eyebrow reveal">Inversión · Versión 3</div>
-        <h2 class="section-title reveal">Un solo paquete.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sin complicaciones.</span></h2>
-        <p class="section-desc reveal">Piloto real y funcional de 20 semanas. Cuando veas los resultados, decides si continuar. Sin presión. Sin contratos forzosos.</p>
+        <div class="section-eyebrow reveal">Inversión · Versión 3 Final</div>
+        <h2 class="section-title reveal">Un paquete.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Seis problemas resueltos.</span></h2>
+        <p class="section-desc reveal">Piloto de 20 semanas. El agente entra en operación desde la primera semana, captura el tráfico orgánico existente, convierte con booking y genera upsells. Sin contratos forzosos.</p>
       </div>
 
       <div class="pricing-single-wrap reveal">
@@ -642,18 +728,16 @@
           <div class="pcv3-body">
             <div class="pcv3-features-title">Qué incluye</div>
             <ul class="pcv3-features">
-              <li><span class="pcv3-chk">✓</span><strong>1 agente completo</strong> — Leads, Booking y Upsells en un solo sistema entrenado para Andrés Miami</li>
-              <li><span class="pcv3-chk">✓</span><strong>Generación automatizada de leads calificados</strong> desde WhatsApp, web y redes</li>
-              <li><span class="pcv3-chk">✓</span><strong>Conversión inmediata vía booking integrado</strong> — del interés a la reserva en segundos</li>
-              <li><span class="pcv3-chk">✓</span><strong>Upsells inteligentes</strong>: botellas, pisos premium, packages VIP en el momento exacto</li>
-              <li><span class="pcv3-chk">✓</span>FAQ 24/7: reservas, menú, dress code, horarios, parqueo</li>
-              <li><span class="pcv3-chk">✓</span>Integración Tripleseat + CRM básico</li>
-              <li><span class="pcv3-chk">✓</span>Feedback post-visita + gestión de reseñas Google</li>
-              <li><span class="pcv3-chk">✓</span>Dashboard ejecutivo con KPIs en tiempo real</li>
-              <li><span class="pcv3-chk">✓</span>Entrenamiento al equipo: manejo y troubleshooting</li>
-              <li><span class="pcv3-chk">✓</span>Inglés, Español y soporte multilenguaje</li>
-              <li><span class="pcv3-chk">✓</span>Implementación 100% remota — sin pisar Miami</li>
-              <li><span class="pcv3-chk">✓</span>Soporte dedicado durante las 20 semanas completas</li>
+              <li><span class="pcv3-chk">✓</span>Captura las <strong>11,594 visitas/mes</strong> que hoy se van sin reservar</li>
+              <li><span class="pcv3-chk">✓</span><strong>Conversión inmediata</strong> vía booking — del interés a la reserva en &lt;60 segundos</li>
+              <li><span class="pcv3-chk">✓</span>Opera <strong>24/7</strong> — turistas en cualquier timezone, cualquier idioma</li>
+              <li><span class="pcv3-chk">✓</span><strong>Upsells automáticos</strong>: botellas, VIP, packages y Happy Hour en el momento exacto</li>
+              <li><span class="pcv3-chk">✓</span>FAQ 100% automatizado — libera al staff para cerrar eventos $5K–$30K</li>
+              <li><span class="pcv3-chk">✓</span>Follow-up post-visita + reseñas Google / TripAdvisor gestionadas</li>
+              <li><span class="pcv3-chk">✓</span>Integración <strong>Tripleseat / OpenTable</strong> — sin formularios fríos</li>
+              <li><span class="pcv3-chk">✓</span>Inglés, Español y multilenguaje — local Miami + turista internacional</li>
+              <li><span class="pcv3-chk">✓</span>Dashboard: consultas → reservas → revenue atribuible en tiempo real</li>
+              <li><span class="pcv3-chk">✓</span>Implementación 100% remota · Soporte completo 20 semanas</li>
             </ul>
 
             <div class="pcv3-divider"></div>
@@ -775,15 +859,15 @@
 
   <!-- ========== CTA FINAL ========== -->
   <section class="cta-final" id="cta">
-    <h2>La fiesta de Andrés no duerme.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ahora su inteligencia tampoco.</span></h2>
-    <p>30 minutos para ver el demo en vivo con los datos reales de Andrés Miami y definir el plan de implementación. Sin compromiso.</p>
+    <h2>El tráfico ya está.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ya es hora de convertirlo.</span></h2>
+    <p>11,594 visitas/mes sin un sistema de conversión activo. El agente entra, captura lo que ya existe y genera revenue desde la primera semana. 30 minutos para ver el demo en vivo.</p>
     <div class="cta-group">
       <a href="#pricing" class="btn-primary">Iniciar Piloto — USD 6,000 →</a>
       <a href="#agents" class="btn-ghost">Ver el Agente</a>
     </div>
     <div class="cta-meta">
       <div class="cta-meta-line">Propuesta para · <span>Andrés Carne de Res Miami</span></div>
-      <div class="cta-meta-line" style="margin-top:4px;">Presentada por · <span>Vibramente AI</span> · Versión · <span>3.0 · 2026</span></div>
+      <div class="cta-meta-line" style="margin-top:4px;">Presentada por · <span>Vibramente AI</span> · Versión · <span>3.0 Final · 2026</span></div>
     </div>
   </section>
 
@@ -803,7 +887,7 @@
         </svg>
         <span style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--text-muted);">VIBRAMENTE AI</span>
       </div>
-      <div class="footer-text">Propuesta confidencial para Andrés Carne de Res Miami · Versión 3.0 · 2026</div>
+      <div class="footer-text">Propuesta confidencial para Andrés Carne de Res Miami · Versión 3.0 Final · 2026</div>
       <div class="footer-text" style="color:#444;">© 2026 Vibramente AI · Todos los derechos reservados.</div>
     </div>
   </footer>
