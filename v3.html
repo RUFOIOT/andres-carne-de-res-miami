@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrés Carne de Res Miami × Vibramente AI — Propuesta v3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ==============================
+       RESET & BASE
+    ============================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fox-orange: #FF6500;
+      --fox-orange-dark: #CC4E00;
+      --fox-gold: #C8A84B;
+      --fox-gold-light: #E8C96B;
+      --dark-bg: #080808;
+      --dark-card: #111111;
+      --dark-card2: #181818;
+      --dark-border: #2A2A2A;
+      --text-white: #FFFFFF;
+      --text-muted: #999999;
+      --text-light: #CCCCCC;
+      --andres-red: #C0392B;
+      --andres-yellow: #F1C40F;
+      --andres-green: #27AE60;
+      --gradient-fox: linear-gradient(135deg, #FF6500, #C8A84B);
+      --gradient-fire: linear-gradient(135deg, #FF6500, #C0392B);
+      --gradient-dark: linear-gradient(135deg, #111111, #1A1A1A);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark-bg);
+      color: var(--text-white);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,101,0,0.2);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .fox-logo-svg { width: 42px; height: 42px; }
+    .brand-text { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--fox-gold); }
+    .brand-sub { font-size: 9px; letter-spacing: 2px; color: var(--text-muted); }
+    .nav-badge {
+      background: rgba(255,101,0,0.12); border: 1px solid rgba(255,101,0,0.3);
+      color: var(--fox-orange); font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 8px 20px; border-radius: 4px;
+    }
+
+    /* ==============================
+       HERO
+    ============================== */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+      background: #080808;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,101,0,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(200,168,75,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 20% 90%, rgba(192,57,43,0.07) 0%, transparent 60%);
+    }
+    .hero-confetti { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .dot {
+      position: absolute; border-radius: 50%; opacity: 0.5;
+      animation: float linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0); opacity:.4; }
+      50% { opacity:.8; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity:0; }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,101,0,0.12); border: 1px solid rgba(255,101,0,0.3);
+      padding: 8px 20px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--fox-orange); margin-bottom: 32px; position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      font-weight: 900; line-height: 1.05; color: #fff;
+      position: relative; z-index: 1; margin-bottom: 24px;
+    }
+    .hero h1 .accent { background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-light); max-width: 640px;
+      position: relative; z-index: 1; margin-bottom: 48px;
+    }
+    .hero-logos {
+      display: flex; align-items: center; gap: 20px;
+      position: relative; z-index: 1; margin-bottom: 48px; flex-wrap: wrap; justify-content: center;
+    }
+    .hero-logo-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 20px; border-radius: 8px;
+    }
+    .hero-logo-pill span { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+    .x-divider { color: var(--fox-gold); font-size: 18px; font-weight: 900; }
+    .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+    .btn-primary {
+      background: var(--gradient-fox); color: #fff;
+      padding: 16px 36px; border-radius: 6px;
+      font-weight: 800; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; transition: all .25s; display: inline-block;
+      box-shadow: 0 0 32px rgba(255,101,0,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(255,101,0,0.5); }
+    .btn-ghost {
+      background: transparent; color: #fff;
+      padding: 15px 32px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 600; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; transition: all .25s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--fox-orange); color: var(--fox-orange); }
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--text-muted); font-size: 10px; letter-spacing: 3px; z-index: 1;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+
+    /* ==============================
+       SECTION COMMON
+    ============================== */
+    section { padding: 100px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--fox-orange); margin-bottom: 16px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+    .section-desc { font-size: 1.05rem; color: var(--text-light); max-width: 580px; margin-bottom: 56px; }
+    .text-center { text-align: center; }
+    .text-center .section-desc { margin-left: auto; margin-right: auto; }
+
+    /* ==============================
+       STATS BAR
+    ============================== */
+    .stats-bar { background: var(--dark-card); border-top: 1px solid var(--dark-border); border-bottom: 1px solid var(--dark-border); }
+    .stats-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { padding: 40px 24px; text-align: center; border-right: 1px solid var(--dark-border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 2.4rem; font-weight: 900; background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+    /* ==============================
+       PARALLAX BANNER
+    ============================== */
+    .parallax-banner {
+      min-height: 280px; display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden; background-attachment: fixed;
+    }
+    .parallax-banner.fox { background: linear-gradient(135deg, #FF6500 0%, #C8A84B 50%, #C0392B 100%); }
+    .parallax-banner.dark { background: linear-gradient(135deg, #111 0%, #1A1A1A 100%); border-top: 1px solid var(--dark-border); border-bottom: 1px solid var(--dark-border); }
+    .parallax-banner .pb-content { position: relative; z-index: 1; padding: 60px 32px; }
+    .parallax-banner .pb-quote {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+      font-style: italic; font-weight: 700; color: #fff; max-width: 800px; margin: 0 auto 20px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .parallax-banner .pb-sub { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+
+    /* ==============================
+       PROBLEM SECTION
+    ============================== */
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; margin-top: 48px; }
+    .problem-card {
+      background: var(--dark-card); padding: 36px 28px;
+      border-left: 3px solid transparent; transition: border-color .3s, background .3s;
+    }
+    .problem-card:hover { border-left-color: var(--fox-orange); background: var(--dark-card2); }
+    .problem-icon { font-size: 2rem; margin-bottom: 16px; }
+    .problem-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .problem-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ==============================
+       AGENTS
+    ============================== */
+    .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 48px; }
+    .agent-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px;
+      padding: 36px 28px; position: relative; overflow: hidden; transition: transform .3s, box-shadow .3s;
+    }
+    .agent-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(255,101,0,0.12); }
+    .agent-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .agent-card.a1::before { background: var(--gradient-fire); }
+    .agent-card.a2::before { background: var(--gradient-fox); }
+    .agent-card.a3::before { background: linear-gradient(90deg, var(--fox-gold), var(--andres-green)); }
+    .agent-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--fox-orange); margin-bottom: 12px; }
+    .agent-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .agent-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+    .agent-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.7; }
+    .agent-features { list-style: none; }
+    .agent-features li {
+      font-size: 0.82rem; color: var(--text-light); padding: 6px 0;
+      border-bottom: 1px solid var(--dark-border); display: flex; gap: 10px; align-items: flex-start;
+    }
+    .agent-features li:last-child { border-bottom: none; }
+    .agent-features li::before { content: '→'; color: var(--fox-orange); flex-shrink: 0; font-weight: 700; }
+    .agent-tag {
+      display: inline-block; margin-top: 20px;
+      background: rgba(255,101,0,0.1); border: 1px solid rgba(255,101,0,0.2);
+      padding: 4px 12px; border-radius: 999px; font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--fox-orange);
+    }
+
+    /* ==============================
+       PRICING V3 — PAQUETE ÚNICO
+    ============================== */
+    #pricing { background: #080808; }
+    .pricing-intro { text-align: center; margin-bottom: 64px; }
+
+    .pricing-single-wrap {
+      display: flex; justify-content: center;
+    }
+    .price-card-v3 {
+      background: var(--dark-card); border: 1px solid rgba(255,101,0,0.35);
+      border-radius: 20px; overflow: hidden; position: relative;
+      max-width: 700px; width: 100%;
+      box-shadow: 0 0 80px rgba(255,101,0,0.15);
+      transition: transform .35s, box-shadow .35s;
+    }
+    .price-card-v3:hover { transform: translateY(-6px); box-shadow: 0 0 100px rgba(255,101,0,0.25); }
+    .price-card-v3::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--gradient-fox);
+    }
+
+    /* Header */
+    .pcv3-header {
+      padding: 44px 44px 32px;
+      border-bottom: 1px solid var(--dark-border);
+      position: relative;
+    }
+    .pcv3-badge {
+      display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 3px;
+      text-transform: uppercase; padding: 5px 16px; border-radius: 999px; margin-bottom: 20px;
+      background: rgba(255,101,0,0.12); color: var(--fox-orange); border: 1px solid rgba(255,101,0,0.25);
+    }
+    .pcv3-title { font-size: 1.9rem; font-weight: 800; margin-bottom: 6px; }
+    .pcv3-subtitle { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 28px; }
+
+    /* Precio tachado + descuento */
+    .pcv3-original-row {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    }
+    .pcv3-original {
+      font-size: 1.1rem; color: #555; text-decoration: line-through;
+      text-decoration-color: #f44;
+    }
+    .pcv3-discount-tag {
+      background: #e53935; color: #fff;
+      font-size: 9px; font-weight: 900; padding: 4px 12px;
+      border-radius: 999px; letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* Precio principal */
+    .pcv3-price-row {
+      display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px;
+    }
+    .pcv3-currency { font-size: 1.6rem; font-weight: 700; color: var(--fox-gold); margin-top: 6px; }
+    .pcv3-amount {
+      font-size: clamp(4rem, 9vw, 5.5rem); font-weight: 900; line-height: 1; letter-spacing: -3px;
+      background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .pcv3-period { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; letter-spacing: 1px; }
+
+    /* Piloto info tag */
+    .pcv3-pilot-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,168,75,0.08); border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 8px; padding: 12px 18px; margin-bottom: 0;
+    }
+    .pcv3-pilot-tag span { font-size: 0.82rem; color: var(--fox-gold-light); }
+    .pcv3-pilot-tag strong { color: var(--fox-gold); }
+
+    /* Body */
+    .pcv3-body { padding: 32px 44px; }
+    .pcv3-features-title {
+      font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 20px;
+    }
+    .pcv3-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .pcv3-features li {
+      display: flex; gap: 14px; align-items: flex-start;
+      font-size: 0.9rem; color: var(--text-light); line-height: 1.5;
+    }
+    .pcv3-chk {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center; font-size: 10px;
+      background: rgba(255,101,0,0.15); color: var(--fox-orange);
+    }
+    .pcv3-divider { height: 1px; background: var(--dark-border); margin: 28px 0; }
+
+    /* Continuidad */
+    .pcv3-continuity {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--dark-border);
+      border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;
+    }
+    .pcv3-cont-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--fox-orange); margin-bottom: 10px;
+    }
+    .pcv3-cont-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .pcv3-cont-desc { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6; }
+    .pcv3-cont-price-row { display: flex; align-items: center; gap: 10px; }
+    .pcv3-cont-price {
+      font-size: 2rem; font-weight: 900;
+      background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .pcv3-cont-price-label { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* CTA */
+    .pcv3-cta {
+      display: block; text-align: center; padding: 18px 28px; border-radius: 8px;
+      font-weight: 800; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; transition: all .25s;
+      background: var(--gradient-fox); color: #fff;
+      box-shadow: 0 0 32px rgba(255,101,0,0.35);
+    }
+    .pcv3-cta:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(255,101,0,0.55); }
+
+    /* Guarantees */
+    .pricing-guarantees {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px; margin-top: 48px; background: var(--dark-card);
+      border-radius: 12px; overflow: hidden; border: 1px solid var(--dark-border);
+    }
+    .guarantee-item { padding: 28px 24px; text-align: center; }
+    .guarantee-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .guarantee-label { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .guarantee-desc { font-size: 11px; color: var(--text-muted); }
+
+    /* ==============================
+       ROI TABLE
+    ============================== */
+    .roi-section { background: var(--dark-card); }
+    .roi-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+    .roi-table thead tr { background: rgba(255,101,0,0.08); border-bottom: 2px solid rgba(255,101,0,0.3); }
+    .roi-table th { padding: 16px 20px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--fox-orange); }
+    .roi-table td { padding: 16px 20px; border-bottom: 1px solid var(--dark-border); font-size: 0.88rem; color: var(--text-light); }
+    .roi-table tr:last-child td { border-bottom: none; }
+    .roi-table .roi-total { background: rgba(255,101,0,0.06); }
+    .roi-table .roi-total td { font-weight: 700; color: #fff; font-size: 1rem; border-top: 2px solid rgba(255,101,0,0.3); }
+    .roi-amount { font-weight: 700; color: var(--fox-gold); }
+    .roi-category { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--fox-orange); padding-top: 24px !important; }
+    .roi-big-numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; margin-top: 48px; }
+    .roi-big-card { text-align: center; background: var(--dark-bg); border: 1px solid var(--dark-border); border-radius: 10px; padding: 32px 16px; }
+    .roi-big-num { font-size: 3rem; font-weight: 900; background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .roi-big-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ==============================
+       CASES
+    ============================== */
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
+    .case-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px;
+      padding: 32px 28px; position: relative; overflow: hidden;
+    }
+    .case-card::before {
+      content: '"'; position: absolute; top: 16px; right: 24px;
+      font-size: 6rem; font-family: 'Playfair Display', serif; line-height: 1;
+      color: rgba(255,101,0,0.08); pointer-events: none;
+    }
+    .case-sector { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--fox-orange); margin-bottom: 12px; }
+    .case-company { font-size: 1.2rem; font-weight: 800; margin-bottom: 16px; }
+    .case-quote { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .case-stats { display: flex; gap: 20px; }
+    .case-stat-num { font-size: 1.4rem; font-weight: 900; background: var(--gradient-fox); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .case-stat-label { font-size: 10px; color: var(--text-muted); }
+
+    /* ==============================
+       CTA FINAL
+    ============================== */
+    .cta-final {
+      background: var(--dark-bg); text-align: center; padding: 120px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,101,0,0.1) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+    }
+    .cta-final p { font-size: 1.05rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 40px; position: relative; }
+    .cta-final .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .cta-meta { margin-top: 48px; position: relative; }
+    .cta-meta-line { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
+    .cta-meta-line span { color: var(--text-light); font-weight: 600; }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    footer {
+      background: #050505; border-top: 1px solid var(--dark-border);
+      padding: 40px 32px; text-align: center;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .footer-text { font-size: 11px; color: var(--text-muted); }
+
+    /* ==============================
+       SCROLL ANIMATIONS
+    ============================== */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 768px) {
+      .navbar { padding: 14px 20px; }
+      .stats-bar .container { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .pcv3-header, .pcv3-body { padding: 28px 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .stats-bar .container { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <svg class="fox-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="foxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF6500"/>
+            <stop offset="100%" style="stop-color:#C8A84B"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="50" cy="55" rx="30" ry="26" fill="url(#foxGrad)"/>
+        <polygon points="20,42 12,18 36,34" fill="url(#foxGrad)"/>
+        <polygon points="80,42 88,18 64,34" fill="url(#foxGrad)"/>
+        <polygon points="21,40 16,24 33,35" fill="#C0392B" opacity=".7"/>
+        <polygon points="79,40 84,24 67,35" fill="#C0392B" opacity=".7"/>
+        <ellipse cx="40" cy="52" rx="6" ry="7" fill="#fff"/>
+        <ellipse cx="60" cy="52" rx="6" ry="7" fill="#fff"/>
+        <circle cx="41" cy="53" r="3.5" fill="#1a1a1a"/>
+        <circle cx="61" cy="53" r="3.5" fill="#1a1a1a"/>
+        <circle cx="42.5" cy="51.5" r="1.2" fill="#fff"/>
+        <circle cx="62.5" cy="51.5" r="1.2" fill="#fff"/>
+        <ellipse cx="50" cy="63" rx="4" ry="3" fill="#1a1a1a"/>
+        <ellipse cx="50" cy="66" rx="10" ry="7" fill="#fff" opacity=".25"/>
+      </svg>
+      <div>
+        <div class="brand-text">Vibramente AI</div>
+        <div class="brand-sub">× Andrés Carne de Res Miami</div>
+      </div>
+    </div>
+    <div class="nav-badge">Propuesta v3 · 2026</div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-confetti" id="confetti"></div>
+
+    <div class="hero-badge">🎯 Propuesta Estratégica v3 · 2026</div>
+
+    <h1>
+      Andrés Carne de Res Miami<br/>
+      <span class="accent">necesita IA tan viva</span><br/>
+      como su fiesta.
+    </h1>
+    <p class="hero-sub">
+      43 años de energía colombiana llegan a Miami Beach. Ahora con inteligencia artificial que genera leads, convierte al instante, llena tu agenda vía booking y multiplica ingresos con upsells inteligentes.
+    </p>
+
+    <div class="hero-logos">
+      <div class="hero-logo-pill">
+        <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="50" cy="55" rx="30" ry="26" fill="#FF6500"/>
+          <polygon points="20,42 12,18 36,34" fill="#FF6500"/>
+          <polygon points="80,42 88,18 64,34" fill="#FF6500"/>
+          <ellipse cx="40" cy="52" rx="6" ry="7" fill="#fff"/>
+          <ellipse cx="60" cy="52" rx="6" ry="7" fill="#fff"/>
+          <circle cx="41" cy="53" r="3.5" fill="#1a1a1a"/>
+          <circle cx="61" cy="53" r="3.5" fill="#1a1a1a"/>
+          <ellipse cx="50" cy="63" rx="4" ry="3" fill="#1a1a1a"/>
+        </svg>
+        <span>Vibramente AI</span>
+      </div>
+      <span class="x-divider">×</span>
+      <div class="hero-logo-pill">
+        <span style="font-size:1.4rem">🎭</span>
+        <span>Andrés Miami</span>
+      </div>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="#pricing" class="btn-primary">Ver Paquete →</a>
+      <a href="#agents" class="btn-ghost">Cómo Funciona</a>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="14" height="22" rx="7" stroke="#666" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="2.5" fill="#FF6500"><animate attributeName="cy" from="8" to="16" dur="1.5s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat-item reveal"><div class="stat-num">3</div><div class="stat-label">Pisos · hasta 240 p/c/u</div></div>
+      <div class="stat-item reveal"><div class="stat-num">6</div><div class="stat-label">Días/semana operando</div></div>
+      <div class="stat-item reveal"><div class="stat-num">$100+</div><div class="stat-label">Ticket promedio USD</div></div>
+      <div class="stat-item reveal"><div class="stat-num">24/7</div><div class="stat-label">Consultas sin respuesta</div></div>
+    </div>
+  </div>
+
+  <!-- ========== PROBLEM ========== -->
+  <section>
+    <div class="container">
+      <div class="section-eyebrow reveal">El problema real</div>
+      <h2 class="section-title reveal">Cada noche hay revenue<br/>que se escapa.</h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal"><div class="problem-icon">🌙</div><div class="problem-title">Consultas a las 2 AM sin respuesta</div><div class="problem-desc">Alguien vio un reel en TikTok, quiere reservar para su cumpleaños. No hay nadie. Al día siguiente eligió otro venue de Lincoln Road.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">📋</div><div class="problem-title">Formulario Tripleseat = fricción</div><div class="problem-desc">El proceso de eventos privados requiere formulario frío. Los clientes premium quieren conversación, no burocracia.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">💸</div><div class="problem-title">Sin upsell post-reserva</div><div class="problem-desc">El cliente reservó mesa. Nadie le ofreció botella de welcome, package de cumpleaños, o upgrade al piso VIP.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🔄</div><div class="problem-title">Sin retención activa</div><div class="problem-desc">¿Cuántos clientes vinieron una vez y no volvieron? Sin seguimiento post-visita, no hay segunda visita.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🗣️</div><div class="problem-title">Staff saturado de FAQs</div><div class="problem-desc">"¿Cuánto cuesta una reserva?", "¿Hay parqueo?", "¿Cuál es el dress code?". El equipo responde lo mismo 50 veces al día.</div></div>
+        <div class="problem-card reveal"><div class="problem-icon">🌎</div><div class="problem-title">Cliente internacional sin soporte</div><div class="problem-desc">Miami Beach atrae turistas globales. Reservas llegan de todas las zonas horarias, en varios idiomas. Nadie opera 24/7.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX 1 ========== -->
+  <div class="parallax-banner fox">
+    <div class="pb-content reveal">
+      <div class="pb-quote">"La demanda está ahí. Los leads llegan. El producto es excepcional. Lo que falta es la capa digital que los capture — a escala, 24/7."</div>
+      <div class="pb-sub">Andrés Miami puede generar 30–50% más revenue sin abrir más horas</div>
+    </div>
+  </div>
+
+  <!-- ========== AGENTS ========== -->
+  <section id="agents">
+    <div class="container">
+      <div class="section-eyebrow text-center reveal">La solución</div>
+      <h2 class="section-title text-center reveal">Agentes de IA entrenados<br/>con el alma de Andrés.</h2>
+      <p class="section-desc text-center reveal">No son chatbots genéricos. Son agentes que conocen el menú, los pisos, el espíritu colombiano y operan con la energía de la marca.</p>
+      <div class="agents-grid">
+        <div class="agent-card a1 reveal">
+          <div class="agent-num">Agente 01</div>
+          <div class="agent-icon">🔥</div>
+          <div class="agent-title">Generación de Leads & Ventas</div>
+          <div class="agent-desc">Identifica, califica y convierte prospectos en tiempo real. Opera en WhatsApp y web, 24/7, con el pitch perfecto para cada lead.</div>
+          <ul class="agent-features">
+            <li>Genera y califica leads de eventos desde canales digitales</li>
+            <li>Califica presupuesto y tamaño del grupo en la primera conversación</li>
+            <li>Presenta Infierno, Paraíso y Cielo con argumentos personalizados</li>
+            <li>Conversión inmediata: del lead al cierre en una sola conversación</li>
+            <li>Seguimiento automático hasta confirmar o descartar el lead</li>
+          </ul>
+          <span class="agent-tag">Generación de leads</span>
+        </div>
+        <div class="agent-card a2 reveal">
+          <div class="agent-num">Agente 02</div>
+          <div class="agent-icon">🗓️</div>
+          <div class="agent-title">Conversión vía Booking 24/7</div>
+          <div class="agent-desc">Del interés a la reserva confirmada en segundos. Convierte visitas, mensajes e intenciones de compra en bookings reales — sin fricción.</div>
+          <ul class="agent-features">
+            <li>FAQ 24/7: horarios, menú, acceso, parqueo, precios</li>
+            <li>Booking directo: convierte el interés en cita/reserva confirmada</li>
+            <li>Guía el proceso hacia Tripleseat con pre-calificación incluida</li>
+            <li>Detecta cumpleaños, aniversarios y ocasiones especiales</li>
+            <li>Confirmación y recordatorio de reserva automatizado</li>
+          </ul>
+          <span class="agent-tag">Conversión inmediata</span>
+        </div>
+        <div class="agent-card a3 reveal">
+          <div class="agent-num">Agente 03</div>
+          <div class="agent-icon">💛</div>
+          <div class="agent-title">Upsells & Fidelización</div>
+          <div class="agent-desc">Maximiza el ticket de cada cliente. Ofrece upgrades, packages y experiencias premium en el momento exacto — convierte reservas en revenue máximo.</div>
+          <ul class="agent-features">
+            <li>Upsells automáticos: botellas, pisos premium, packages VIP</li>
+            <li>Mensaje post-visita a las 24h con oferta personalizada</li>
+            <li>Manejo de fricciones antes de Google Reviews</li>
+            <li>Solicita reseña a clientes satisfechos (Google / TripAdvisor)</li>
+            <li>Segmenta clientes VIP y frecuentes para trato diferencial</li>
+          </ul>
+          <span class="agent-tag">Upsells inteligentes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX 2 ========== -->
+  <div class="parallax-banner dark">
+    <div class="pb-content reveal">
+      <div class="pb-quote" style="color: var(--fox-gold);">"Implementación 100% remota. Sin instalar nada en el local. Operativo en semanas."</div>
+      <div class="pb-sub" style="color:#666;">WhatsApp Business API · Claude AI · n8n Automation · Tripleseat · Google Sheets</div>
+    </div>
+  </div>
+
+  <!-- ========== PRICING V3 — PAQUETE ÚNICO ========== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-intro">
+        <div class="section-eyebrow reveal">Inversión · Versión 3</div>
+        <h2 class="section-title reveal">Un solo paquete.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sin complicaciones.</span></h2>
+        <p class="section-desc reveal">Piloto real y funcional de 20 semanas. Cuando veas los resultados, decides si continuar. Sin presión. Sin contratos forzosos.</p>
+      </div>
+
+      <div class="pricing-single-wrap reveal">
+        <div class="price-card-v3">
+
+          <!-- Header -->
+          <div class="pcv3-header">
+            <div class="pcv3-badge">🚀 Paquete Único · Piloto 20 Semanas</div>
+            <div class="pcv3-title">Suite de Agentes IA</div>
+            <div class="pcv3-subtitle">Generación de leads · Conversión inmediata · Booking automatizado · Upsells inteligentes</div>
+
+            <div class="pcv3-original-row">
+              <span class="pcv3-original">Valor de mercado: $24,000</span>
+              <span class="pcv3-discount-tag">−75%</span>
+            </div>
+            <div class="pcv3-price-row">
+              <span class="pcv3-currency">USD</span>
+              <span class="pcv3-amount">6,000</span>
+            </div>
+            <div class="pcv3-period">Pago único · sin mensualidades · sin sorpresas</div>
+
+            <div class="pcv3-pilot-tag">
+              <span>📅</span>
+              <span><strong>Piloto de 20 semanas</strong> — tiempo suficiente para ver resultados reales sobre la mesa</span>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="pcv3-body">
+            <div class="pcv3-features-title">Qué incluye</div>
+            <ul class="pcv3-features">
+              <li><span class="pcv3-chk">✓</span><strong>3 agentes especializados</strong> — Leads, Booking y Upsells entrenados para Andrés Miami</li>
+              <li><span class="pcv3-chk">✓</span><strong>Generación automatizada de leads calificados</strong> desde WhatsApp, web y redes</li>
+              <li><span class="pcv3-chk">✓</span><strong>Conversión inmediata vía booking integrado</strong> — del interés a la reserva en segundos</li>
+              <li><span class="pcv3-chk">✓</span><strong>Upsells inteligentes</strong>: botellas, pisos premium, packages VIP en el momento exacto</li>
+              <li><span class="pcv3-chk">✓</span>FAQ 24/7: reservas, menú, dress code, horarios, parqueo</li>
+              <li><span class="pcv3-chk">✓</span>Integración Tripleseat + CRM básico</li>
+              <li><span class="pcv3-chk">✓</span>Feedback post-visita + gestión de reseñas Google</li>
+              <li><span class="pcv3-chk">✓</span>Dashboard ejecutivo con KPIs en tiempo real</li>
+              <li><span class="pcv3-chk">✓</span>Entrenamiento al equipo: manejo y troubleshooting</li>
+              <li><span class="pcv3-chk">✓</span>Inglés, Español y soporte multilenguaje</li>
+              <li><span class="pcv3-chk">✓</span>Implementación 100% remota — sin pisar Miami</li>
+              <li><span class="pcv3-chk">✓</span>Soporte dedicado durante las 20 semanas completas</li>
+            </ul>
+
+            <div class="pcv3-divider"></div>
+
+            <!-- Continuidad -->
+            <div class="pcv3-continuity">
+              <div class="pcv3-cont-label">¿Quieres continuar después del piloto?</div>
+              <div class="pcv3-cont-title">Tiempo Indefinido</div>
+              <div class="pcv3-cont-desc">Si los resultados te convencen — y te van a convencer — la continuidad es simple. Sin nuevos contratos, sin negociaciones:</div>
+              <div class="pcv3-cont-price-row">
+                <div class="pcv3-cont-price">USD 6,000</div>
+                <div class="pcv3-cont-price-label">pago adicional · acceso indefinido</div>
+              </div>
+            </div>
+
+            <a href="#cta" class="pcv3-cta">Comenzar el Piloto — USD 6,000 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guarantees -->
+      <div class="pricing-guarantees reveal">
+        <div class="guarantee-item">
+          <div class="guarantee-icon">🚀</div>
+          <div class="guarantee-label">Sin contrato forzoso</div>
+          <div class="guarantee-desc">Piloto de 20 semanas. Luego decides.</div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">🛡️</div>
+          <div class="guarantee-label">Soporte completo incluido</div>
+          <div class="guarantee-desc">Ajustes y calibración durante todo el piloto.</div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">🌐</div>
+          <div class="guarantee-label">100% remoto</div>
+          <div class="guarantee-desc">Configuración sin pisar Miami.</div>
+        </div>
+        <div class="guarantee-item">
+          <div class="guarantee-icon">📊</div>
+          <div class="guarantee-label">ROI medible</div>
+          <div class="guarantee-desc">Dashboard en tiempo real desde el día 1.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== ROI ========== -->
+  <section class="roi-section">
+    <div class="container">
+      <div class="section-eyebrow reveal">Retorno de inversión</div>
+      <h2 class="section-title reveal">Los números hablan solos.</h2>
+      <p class="section-desc reveal">Escenario conservador. Sólo capturando una fracción del revenue que hoy se pierde.</p>
+
+      <div style="overflow-x:auto;">
+        <table class="roi-table reveal">
+          <thead><tr><th>Categoría</th><th>Concepto</th><th>Impacto / Mes</th></tr></thead>
+          <tbody>
+            <tr><td class="roi-category" colspan="3">Generación de Leads & Reservas</td></tr>
+            <tr><td></td><td>Leads capturados y convertidos por agente / mes (36)</td><td class="roi-amount">$10,080</td></tr>
+            <tr><td></td><td>Eventos privados cerrados vía booking automatizado (2/mes)</td><td class="roi-amount">$24,000</td></tr>
+            <tr><td></td><td>Upsell botellas, upgrades, packages por agente</td><td class="roi-amount">$3,200</td></tr>
+            <tr><td class="roi-category" colspan="3">Conversión & Retención</td></tr>
+            <tr><td></td><td>Clientes recurrentes por experiencia personalizada (+15%)</td><td class="roi-amount">$4,800</td></tr>
+            <tr><td></td><td>Incremento ticket por upsells IA (+8%)</td><td class="roi-amount">$2,400</td></tr>
+            <tr><td class="roi-category" colspan="3">Ahorro Operativo</td></tr>
+            <tr><td></td><td>Reducción desperdicio de insumos (12% costo)</td><td class="roi-amount">$3,600</td></tr>
+            <tr><td></td><td>Ahorro horas staff en consultas repetitivas</td><td class="roi-amount">$1,800</td></tr>
+            <tr class="roi-total"><td colspan="2">💰 Impacto total / mes</td><td class="roi-amount">$49,880</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="roi-big-numbers reveal">
+        <div class="roi-big-card"><div class="roi-big-num">16×</div><div class="roi-big-label">Retorno por dólar invertido</div></div>
+        <div class="roi-big-card"><div class="roi-big-num">3–4 sem.</div><div class="roi-big-label">Hasta sistema operativo</div></div>
+        <div class="roi-big-card"><div class="roi-big-num">100%</div><div class="roi-big-label">Implementación remota</div></div>
+        <div class="roi-big-card"><div class="roi-big-num">−12%</div><div class="roi-big-label">Desperdicio de insumos</div></div>
+        <div class="roi-big-card"><div class="roi-big-num">+15%</div><div class="roi-big-label">Recurrencia de clientes</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARALLAX 3 ========== -->
+  <div class="parallax-banner fox">
+    <div class="pb-content reveal">
+      <div class="pb-quote">"No vendemos promesas. Vendemos resultados probados en negocios latinoamericanos con desafíos similares al tuyo."</div>
+      <div class="pb-sub">Vibramente AI · Metodología IA Agéntica</div>
+    </div>
+  </div>
+
+  <!-- ========== CASES ========== -->
+  <section>
+    <div class="container">
+      <div class="section-eyebrow reveal">Casos reales de Vibramente</div>
+      <h2 class="section-title reveal">La metodología ya está<br/>transformando empresas.</h2>
+      <div class="cases-grid">
+        <div class="case-card reveal">
+          <div class="case-sector">Gastronomía & Operaciones · Ecuador</div>
+          <div class="case-company">Club Los Chillos</div>
+          <div class="case-quote">"Desde que implementamos IA agéntica, hemos desarrollado estrategias que ahorran a la compañía miles de dólares al año. Temas que tomaban mucho tiempo, ahora los hacemos en minutos."</div>
+          <div class="case-stats"><div><div class="case-stat-num">Miles $</div><div class="case-stat-label">Ahorro anual en ops</div></div><div><div class="case-stat-num">Minutos</div><div class="case-stat-label">vs horas en procesos</div></div></div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-sector">Retail + Servicio al cliente · 40+ puntos</div>
+          <div class="case-company">Factory Bike Ecuador</div>
+          <div class="case-quote">"Pensamos en expansión internacional y sabemos que tenemos el servicio al cliente más personalizado en el sector de motocicletas. Una estrategia agéntica cambió las reglas del juego."</div>
+          <div class="case-stats"><div><div class="case-stat-num">70%</div><div class="case-stat-label">Consultas automatizadas</div></div><div><div class="case-stat-num">24/7</div><div class="case-stat-label">Atención activa</div></div></div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-sector">ONG · Fundraising · Internacional</div>
+          <div class="case-company">UNICEF Chile</div>
+          <div class="case-quote">Demo en vivo para Carlos Heredia, Fundraising Manager UNICEF Chile. Sistema de hiper-personalización con IA para captación de donantes a escala global.</div>
+          <div class="case-stats"><div><div class="case-stat-num">$20M</div><div class="case-stat-label">Revenue fundraising 2024</div></div><div><div class="case-stat-num">Live ✅</div><div class="case-stat-label">Demo ejecutado</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section class="cta-final" id="cta">
+    <h2>La fiesta de Andrés no duerme.<br/><span style="background:var(--gradient-fox);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ahora su inteligencia tampoco.</span></h2>
+    <p>30 minutos para ver el demo en vivo con los datos reales de Andrés Miami y definir el plan de implementación. Sin compromiso.</p>
+    <div class="cta-group">
+      <a href="#pricing" class="btn-primary">Iniciar Piloto — USD 6,000 →</a>
+      <a href="#agents" class="btn-ghost">Ver los Agentes</a>
+    </div>
+    <div class="cta-meta">
+      <div class="cta-meta-line">Propuesta para · <span>Andrés Carne de Res Miami</span></div>
+      <div class="cta-meta-line" style="margin-top:4px;">Presentada por · <span>Vibramente AI</span> · Versión · <span>3.0 · 2026</span></div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="50" cy="55" rx="30" ry="26" fill="#FF6500"/>
+          <polygon points="20,42 12,18 36,34" fill="#FF6500"/>
+          <polygon points="80,42 88,18 64,34" fill="#FF6500"/>
+          <ellipse cx="40" cy="52" rx="6" ry="7" fill="#fff"/>
+          <ellipse cx="60" cy="52" rx="6" ry="7" fill="#fff"/>
+          <circle cx="41" cy="53" r="3.5" fill="#1a1a1a"/>
+          <circle cx="61" cy="53" r="3.5" fill="#1a1a1a"/>
+          <ellipse cx="50" cy="63" rx="4" ry="3" fill="#1a1a1a"/>
+        </svg>
+        <span style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--text-muted);">VIBRAMENTE AI</span>
+      </div>
+      <div class="footer-text">Propuesta confidencial para Andrés Carne de Res Miami · Versión 3.0 · 2026</div>
+      <div class="footer-text" style="color:#444;">© 2026 Vibramente AI · Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Confetti dots
+    const confetti = document.getElementById('confetti');
+    const colors = ['#FF6500','#C8A84B','#C0392B','#F1C40F','#27AE60','#fff','#FF6500'];
+    for (let i = 0; i < 60; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot';
+      const size = Math.random() * 6 + 3;
+      d.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        bottom:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${Math.random()*8+6}s;
+        animation-delay:${Math.random()*8}s;
+      `;
+      confetti.appendChild(d);
+    }
+
+    // Intersection Observer
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+
+</body>
+</html>
